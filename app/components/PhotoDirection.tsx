@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { journeyArc, journeyPhotos, usingPlaceholderImages } from "../lib/photography";
@@ -15,6 +14,8 @@ interface PhotoDirectionProps {
   showDirection?: boolean;
   showStep?: boolean;
   showPlaceholderLabel?: boolean;
+  /** Lift, shadow, and brighten on hover (journey strip cards) */
+  interactive?: boolean;
 }
 
 function PlaceholderLabel({ brief }: { brief: PhotoBrief }) {
@@ -44,14 +45,23 @@ export function PhotoDirection({
   showDirection = false,
   showStep = false,
   showPlaceholderLabel = usingPlaceholderImages,
+  interactive = false,
 }: PhotoDirectionProps) {
   const [imageError, setImageError] = useState(false);
   const ratio = aspectRatio ?? brief.aspectRatio ?? "aspect-[4/5]";
-  const showLabel = showPlaceholderLabel || imageError;
+  const showLabel = showPlaceholderLabel && usingPlaceholderImages;
+
+  const imageTransition = interactive
+    ? "transition-all duration-[250ms] ease group-hover/card:brightness-110"
+    : "transition-transform duration-700 group-hover:scale-[1.01]";
+
+  const figureInteractive = interactive
+    ? "group-hover/card:border-blush/70 group-hover/card:ring-blush/40"
+    : "";
 
   return (
     <figure
-      className={`group relative overflow-hidden rounded-2xl border border-blush/50 bg-blush/30 shadow-sm ring-1 ring-blush/20 ${ratio} ${className}`}
+      className={`group relative overflow-hidden rounded-2xl border border-blush/50 bg-blush/30 shadow-sm ring-1 ring-blush/20 ${ratio} ${figureInteractive} ${className}`}
     >
       {showStep && brief.step && !showLabel && (
         <div className="absolute left-3 top-3 z-10 rounded-full bg-warm-white/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-terracotta shadow-sm backdrop-blur-sm">
@@ -59,17 +69,21 @@ export function PhotoDirection({
         </div>
       )}
 
-      {!imageError && (
-        <Image
+      {!imageError ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
           src={brief.src}
           alt={brief.alt}
-          fill
-          priority={priority}
-          sizes={sizes}
-          className="object-cover transition-transform duration-700 group-hover:scale-[1.01]"
+          className={`absolute inset-0 h-full w-full object-cover ${imageTransition}`}
           style={{ objectPosition: brief.objectPosition ?? "center center" }}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
           onError={() => setImageError(true)}
         />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center bg-blush/40 p-4 text-center text-sm text-deep-brown/60">
+          Image not found: /public/images/{brief.file}
+        </div>
       )}
 
       {!showLabel && (
@@ -110,13 +124,21 @@ export function EverySeasonVisual() {
   );
 }
 
+const journeySectionAnchors: Record<string, string> = {
+  discover: "discover",
+  "sit-with-jesus": "sit-with-jesus",
+  walk: "walk",
+  gather: "community",
+  share: "share",
+};
+
 export function JourneyPhotoStrip() {
   return (
     <div>
       <p className="mb-2 text-center text-sm font-medium uppercase tracking-[0.2em] text-sage">
         Your journey at His table
       </p>
-      <p className="mb-8 text-center font-serif text-lg text-deep-brown/70">
+      <p className="mb-6 text-center font-serif text-lg text-deep-brown/70">
         Assessment → Devotion → Planning → Community → Testimony
       </p>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -128,15 +150,21 @@ export function JourneyPhotoStrip() {
                 aria-hidden="true"
               />
             )}
-            <PhotoDirection
-              brief={brief}
-              aspectRatio="aspect-[3/4]"
-              sizes="(max-width: 640px) 45vw, 220px"
-              showStep={!usingPlaceholderImages}
-            />
-            <p className="mt-3 text-center font-serif text-sm font-semibold text-deep-brown">
-              {brief.label}
-            </p>
+            <a
+              href={`#${journeySectionAnchors[brief.id] ?? brief.id}`}
+              className="group/card block cursor-pointer rounded-2xl shadow-sm transition-all duration-[250ms] ease hover:-translate-y-1.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta"
+            >
+              <PhotoDirection
+                brief={brief}
+                aspectRatio="aspect-[3/4]"
+                sizes="(max-width: 640px) 45vw, 220px"
+                showStep={!usingPlaceholderImages}
+                interactive
+              />
+              <p className="mt-3 text-center font-serif text-sm font-semibold text-deep-brown transition-colors duration-[250ms] ease group-hover/card:text-terracotta">
+                {brief.label}
+              </p>
+            </a>
           </div>
         ))}
       </div>
@@ -151,6 +179,7 @@ export function JourneySection({
   description,
   brief,
   children,
+  below,
   imageFirst = false,
   className = "",
 }: {
@@ -160,6 +189,7 @@ export function JourneySection({
   description: string;
   brief: PhotoBrief;
   children?: ReactNode;
+  below?: ReactNode;
   imageFirst?: boolean;
   className?: string;
 }) {
@@ -188,19 +218,22 @@ export function JourneySection({
   );
 
   return (
-    <section id={id} className={`px-6 py-24 ${className}`}>
-      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        {imageFirst ? (
-          <>
-            {photo}
-            {copy}
-          </>
-        ) : (
-          <>
-            {copy}
-            {photo}
-          </>
-        )}
+    <section id={id} className={`px-6 py-16 ${className}`}>
+      <div className="mx-auto max-w-6xl">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+          {imageFirst ? (
+            <>
+              {photo}
+              {copy}
+            </>
+          ) : (
+            <>
+              {copy}
+              {photo}
+            </>
+          )}
+        </div>
+        {below && <div className="mt-12">{below}</div>}
       </div>
     </section>
   );

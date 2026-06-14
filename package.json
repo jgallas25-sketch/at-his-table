@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node scripts/update-image-versions.mjs && next dev",
+    "build": "node scripts/update-image-versions.mjs && next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:photos": "node scripts/generate-placeholders.mjs"
+    "generate:photos": "node scripts/generate-placeholders.mjs",
+    "images:refresh": "node scripts/update-image-versions.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

@@ -1,4 +1,6 @@
 /** Photography direction briefs — replace files in public/images/ when brand shoots are ready */
+import imageVersions from "./imageVersions.json";
+
 export type PhotoBrief = {
   id: string;
   label: string;
@@ -15,7 +17,7 @@ export type PhotoBrief = {
 };
 
 /** Set false once final photography replaces the placeholder JPGs in public/images/ */
-export const usingPlaceholderImages = true;
+export const usingPlaceholderImages = false;
 
 /** Canonical image filenames — swap these files in public/images/ for final photography */
 export const collectionFiles = {
@@ -27,7 +29,10 @@ export const collectionFiles = {
   share: "testimony-journal.jpg",
 } as const;
 
-const imagePath = (file: string) => `/images/${file}`;
+const imagePath = (file: string) => {
+  const version = imageVersions[file as keyof typeof imageVersions] ?? 0;
+  return `/images/${file}?v=${version}`;
+};
 
 export const collectionImages = {
   hero: {

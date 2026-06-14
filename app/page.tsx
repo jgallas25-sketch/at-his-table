@@ -169,8 +169,8 @@ function FeatureCard({
   icon: ReactNode;
 }) {
   return (
-    <div className="group rounded-2xl border border-blush/50 bg-warm-white p-8 shadow-sm transition-all duration-300 hover:border-rose/60 hover:shadow-md">
-      <div className="mb-5 inline-flex rounded-xl bg-blush/40 p-3 text-terracotta transition-colors group-hover:bg-blush/60">
+    <div className="group rounded-2xl border border-blush/50 bg-warm-white p-6 shadow-sm transition-all duration-300 hover:border-rose/60 hover:shadow-md">
+      <div className="mb-4 inline-flex rounded-xl bg-blush/40 p-3 text-terracotta transition-colors group-hover:bg-blush/60">
         {icon}
       </div>
       <h3 className="font-serif text-2xl font-semibold text-deep-brown">{title}</h3>
@@ -204,13 +204,13 @@ export default function Home() {
       </header>
 
       {/* 1. Ecclesiastes 3 — Scripture & vision */}
-      <section id="vision" className="relative overflow-hidden px-6 pb-16 pt-16 sm:pb-20 sm:pt-24">
+      <section id="vision" className="relative overflow-hidden px-6 py-20">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-blush/30 blur-3xl" />
           <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-rose/20 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <div className="text-center lg:text-left">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-sage">Ecclesiastes 3</p>
             <h1 className="mt-4 font-serif text-4xl font-semibold leading-tight text-deep-brown sm:text-5xl lg:text-6xl">
@@ -220,17 +220,17 @@ export default function Home() {
               Every season has a seat at His table.
             </h2>
 
-            <div className="mx-auto mt-10 max-w-xl lg:mx-0">
+            <div className="mx-auto mt-8 max-w-xl lg:mx-0">
               <SeasonMoments />
             </div>
 
-            <p className="mx-auto mt-10 max-w-xl text-lg leading-relaxed text-deep-brown/70 lg:mx-0">
+            <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-deep-brown/70 lg:mx-0">
               Wherever your season finds you, Christ meets you there. God works
               differently in different seasons — and faith is lived in the
               everyday, not only on the mountaintop.
             </p>
 
-            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
               <a
                 href="#every-season"
                 className="inline-flex items-center justify-center rounded-full bg-terracotta px-8 py-3.5 text-base font-medium text-warm-white shadow-md transition-all hover:bg-deep-brown hover:shadow-lg"
@@ -253,7 +253,7 @@ export default function Home() {
       </section>
 
       {/* 2. Every season — visual band of women */}
-      <section id="every-season" className="relative overflow-hidden border-y border-blush/40 bg-warm-white px-6 py-24">
+      <section id="every-season" className="relative overflow-hidden border-y border-blush/40 bg-warm-white px-6 py-16">
         <SectionBackground />
         <div className="relative mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
@@ -267,11 +267,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-14">
+          <div className="mt-10">
             <EverySeasonVisual />
           </div>
 
-          <div className="mt-12 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             {audiences.map((audience) => (
               <span
                 key={audience}
@@ -285,7 +285,7 @@ export default function Home() {
       </section>
 
       {/* 3. Martha — origin story */}
-      <section id="martha" className="px-6 py-24">
+      <section id="martha" className="px-6 py-16">
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-sage">
             Why At His Table Exists
@@ -294,14 +294,14 @@ export default function Home() {
             Martha learned that sitting at Jesus&apos; feet wasn&apos;t reserved
             for easy seasons.
           </h2>
-          <p className="mt-8 text-lg leading-relaxed text-deep-brown/70">
+          <p className="mt-6 text-lg leading-relaxed text-deep-brown/70">
             At His Table began with Martha — a woman who discovered that
             presence with Christ isn&apos;t a luxury for when life slows down.
             It is the foundation for every season. Her story is the reason this
             table exists — and every woman who follows finds her own path through
             it.
           </p>
-          <blockquote className="mx-auto mt-10 max-w-2xl border-l-2 border-gold pl-6 text-left font-serif text-xl italic leading-relaxed text-terracotta sm:text-2xl">
+          <blockquote className="mx-auto mt-8 max-w-2xl border-l-2 border-gold pl-6 text-left font-serif text-xl italic leading-relaxed text-terracotta sm:text-2xl">
             &ldquo;Martha, Martha, you are worried and upset about many things,
             but few things are needed — or indeed only one.&rdquo;
             <footer className="mt-3 text-sm font-sans font-medium not-italic text-deep-brown/50">
@@ -312,16 +312,16 @@ export default function Home() {
       </section>
 
       {/* Journey arc overview */}
-      <section className="border-y border-blush/40 bg-warm-white px-6 py-20">
+      <section className="border-y border-blush/40 bg-warm-white px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <JourneyPhotoStrip />
         </div>
       </section>
 
       {/* 4. Discover Your Season — Assessment */}
-      <section id="discover" className="border-y border-blush/40 bg-warm-white px-6 py-24">
+      <section id="discover" className="border-y border-blush/40 bg-warm-white px-6 py-16">
         <div className="mx-auto max-w-6xl">
-          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
             <PhotoDirection
               brief={journeyPhotos.discover}
               className="shadow-lg lg:order-2"
@@ -348,7 +348,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-16">
+          <div className="mt-12">
             <AssessmentGrid />
           </div>
         </div>
@@ -362,15 +362,15 @@ export default function Home() {
         description="At His Table leads with presence, not content. A warm devotional moment — Bible open, quiet stillness, and time with Jesus before anything else is asked of you."
         brief={journeyPhotos.sitWithJesus}
         imageFirst
+        className="border-t border-blush/40"
+        below={
+          <div className="grid gap-6 sm:grid-cols-2">
+            {sitWithJesusFeatures.map((feature) => (
+              <FeatureCard key={feature.title} {...feature} />
+            ))}
+          </div>
+        }
       />
-
-      <section className="border-b border-blush/40 px-6 pb-24">
-        <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2">
-          {sitWithJesusFeatures.map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
-          ))}
-        </div>
-      </section>
 
       {/* 6. Walk With Intention */}
       <JourneySection
@@ -379,16 +379,15 @@ export default function Home() {
         title="Faith shaping everyday life."
         description="With journal, Bible, and planner open, she shapes her week with intention — writing goals, recording prayer requests, and letting faith guide the everyday."
         brief={journeyPhotos.walk}
-        className="bg-warm-white"
+        className="border-t border-blush/40 bg-warm-white"
+        below={
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {walkFeatures.map((feature) => (
+              <FeatureCard key={feature.title} {...feature} />
+            ))}
+          </div>
+        }
       />
-
-      <section className="border-b border-blush/40 bg-warm-white px-6 pb-24">
-        <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {walkFeatures.map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
-          ))}
-        </div>
-      </section>
 
       {/* 7. Gather Around the Table */}
       <JourneySection
@@ -398,10 +397,7 @@ export default function Home() {
         description="A small group gathered for prayer, Bible study, or coffee — sisters matched by season, walking together with encouragement, wisdom, and gentle accountability."
         brief={journeyPhotos.gather}
         imageFirst
-      />
-
-      <section className="border-b border-blush/40 px-6 pb-24">
-        <div className="mx-auto max-w-6xl">
+        below={
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {communityPillars.map((pillar) => (
               <div
@@ -413,8 +409,8 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        }
+      />
 
       {/* 8. Share Your Story */}
       <JourneySection
@@ -423,13 +419,13 @@ export default function Home() {
         title="Your story strengthens others."
         description="Every season carries a testimony. In her journal, she writes what God is doing — reflections, gratitude, and story — strengthening faith for everyone at the table."
         brief={journeyPhotos.share}
-        className="bg-warm-white"
+        className="border-t border-blush/40 bg-warm-white"
       />
 
       {/* 9. Membership */}
-      <section id="membership" className="border-t border-blush/40 px-6 py-24">
+      <section id="membership" className="border-t border-blush/40 px-6 py-16">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-16 text-center">
+          <div className="mb-12 text-center">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-sage">Take Your Seat</p>
             <h2 className="font-serif text-3xl font-semibold text-deep-brown sm:text-4xl">
               Your seat is waiting.
@@ -486,7 +482,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-blush/40 bg-warm-white px-6 py-24">
+      <section className="relative overflow-hidden border-t border-blush/40 bg-warm-white px-6 py-16">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-3xl" />
         </div>
@@ -498,7 +494,7 @@ export default function Home() {
           <p className="mt-6 font-serif text-xl text-terracotta">
             Every season has a seat at His table.
           </p>
-          <div className="mt-10">
+          <div className="mt-8">
             <JoinButton />
           </div>
         </div>
