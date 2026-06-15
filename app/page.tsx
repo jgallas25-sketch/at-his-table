@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { AssessmentGrid, SeasonMoments, SectionBackground } from "./components/HomeSections";
+import { TasteOfPersonalization } from "./components/TasteOfPersonalization";
 import {
   EverySeasonVisual,
   HeroVisual,
@@ -204,13 +205,13 @@ export default function Home() {
       </header>
 
       {/* 1. Ecclesiastes 3 — Scripture & vision */}
-      <section id="vision" className="relative overflow-hidden px-6 py-20">
+      <section id="vision" className="relative overflow-hidden px-6 pt-20 pb-16">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-blush/30 blur-3xl" />
           <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-rose/20 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2 lg:gap-10">
           <div className="text-center lg:text-left">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-sage">Ecclesiastes 3</p>
             <h1 className="mt-4 font-serif text-4xl font-semibold leading-tight text-deep-brown sm:text-5xl lg:text-6xl">
@@ -253,7 +254,7 @@ export default function Home() {
       </section>
 
       {/* 2. Every season — visual band of women */}
-      <section id="every-season" className="relative overflow-hidden border-y border-blush/40 bg-warm-white px-6 py-16">
+      <section id="every-season" className="relative overflow-hidden border-y border-blush/40 bg-warm-white px-6 pb-16">
         <SectionBackground />
         <div className="relative mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
@@ -285,7 +286,7 @@ export default function Home() {
       </section>
 
       {/* 3. Martha — origin story */}
-      <section id="martha" className="px-6 py-16">
+      <section id="martha" className="px-6 pb-16">
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-sage">
             Why At His Table Exists
@@ -312,16 +313,16 @@ export default function Home() {
       </section>
 
       {/* Journey arc overview */}
-      <section className="border-y border-blush/40 bg-warm-white px-6 py-16">
+      <section className="border-y border-blush/40 bg-warm-white px-6 pb-16">
         <div className="mx-auto max-w-6xl">
           <JourneyPhotoStrip />
         </div>
       </section>
 
       {/* 4. Discover Your Season — Assessment */}
-      <section id="discover" className="border-y border-blush/40 bg-warm-white px-6 py-16">
+      <section id="discover" className="border-y border-blush/40 bg-warm-white px-6 pb-16">
         <div className="mx-auto max-w-6xl">
-          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
+          <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
             <PhotoDirection
               brief={journeyPhotos.discover}
               className="shadow-lg lg:order-2"
@@ -348,7 +349,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12">
+          <div id="taste" className="mx-auto mt-10 max-w-2xl">
+            <TasteOfPersonalization />
+          </div>
+
+          <div className="mt-10">
             <AssessmentGrid />
           </div>
         </div>
@@ -423,9 +428,9 @@ export default function Home() {
       />
 
       {/* 9. Membership */}
-      <section id="membership" className="border-t border-blush/40 px-6 py-16">
+      <section id="membership" className="border-t border-blush/40 px-6 pb-16">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-12 text-center">
+          <div className="mb-10 text-center">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-sage">Take Your Seat</p>
             <h2 className="font-serif text-3xl font-semibold text-deep-brown sm:text-4xl">
               Your seat is waiting.
@@ -482,7 +487,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-blush/40 bg-warm-white px-6 py-16">
+      <section className="relative overflow-hidden border-t border-blush/40 bg-warm-white px-6 pb-16">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-3xl" />
         </div>

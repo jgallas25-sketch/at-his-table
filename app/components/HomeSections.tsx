@@ -2,12 +2,11 @@ import Image from "next/image";
 import { editorialImages } from "../lib/images";
 
 const seasonMoments = [
-  "A time to mourn",
-  "A time to laugh",
   "A time to plant",
-  "A time to harvest",
+  "A time to laugh",
+  "A time to heal",
+  "A time to mourn",
   "A time to wait",
-  "A time to move",
   "A time to begin again",
 ];
 

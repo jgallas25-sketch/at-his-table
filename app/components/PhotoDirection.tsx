@@ -56,12 +56,12 @@ export function PhotoDirection({
     : "transition-transform duration-700 group-hover:scale-[1.01]";
 
   const figureInteractive = interactive
-    ? "group-hover/card:border-blush/70 group-hover/card:ring-blush/40"
+    ? "group-hover/card:border-blush/70 group-hover/card:shadow-lg group-hover/card:ring-blush/40"
     : "";
 
   return (
     <figure
-      className={`group relative overflow-hidden rounded-2xl border border-blush/50 bg-blush/30 shadow-sm ring-1 ring-blush/20 ${ratio} ${figureInteractive} ${className}`}
+      className={`group relative overflow-hidden rounded-2xl border border-blush/50 bg-blush/30 shadow-sm ring-1 ring-blush/20 transition-shadow duration-[250ms] ease ${ratio} ${figureInteractive} ${className}`}
     >
       {showStep && brief.step && !showLabel && (
         <div className="absolute left-3 top-3 z-10 rounded-full bg-warm-white/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-terracotta shadow-sm backdrop-blur-sm">
@@ -152,7 +152,7 @@ export function JourneyPhotoStrip() {
             )}
             <a
               href={`#${journeySectionAnchors[brief.id] ?? brief.id}`}
-              className="group/card block cursor-pointer rounded-2xl shadow-sm transition-all duration-[250ms] ease hover:-translate-y-1.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta"
+              className="group/card block cursor-pointer rounded-2xl shadow-sm transition-all duration-[250ms] ease hover:-translate-y-[6px] hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta"
             >
               <PhotoDirection
                 brief={brief}
@@ -161,7 +161,7 @@ export function JourneyPhotoStrip() {
                 showStep={!usingPlaceholderImages}
                 interactive
               />
-              <p className="mt-3 text-center font-serif text-sm font-semibold text-deep-brown transition-colors duration-[250ms] ease group-hover/card:text-terracotta">
+              <p className="mt-3 text-center font-serif text-sm font-semibold text-deep-brown">
                 {brief.label}
               </p>
             </a>
@@ -218,9 +218,9 @@ export function JourneySection({
   );
 
   return (
-    <section id={id} className={`px-6 py-16 ${className}`}>
+    <section id={id} className={`px-6 pb-16 ${className}`}>
       <div className="mx-auto max-w-6xl">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
           {imageFirst ? (
             <>
               {photo}
@@ -233,7 +233,7 @@ export function JourneySection({
             </>
           )}
         </div>
-        {below && <div className="mt-12">{below}</div>}
+        {below && <div className="mt-10">{below}</div>}
       </div>
     </section>
   );
