@@ -20,6 +20,27 @@ const audiences = [
   "Women carrying burdens",
 ];
 
+const howItWorksSteps = [
+  {
+    number: "1",
+    title: "Bring What You're Carrying",
+    description:
+      "Each week, bring Him your season — what's weighing on you, what you long for. Like Martha running to meet Jesus, you don't carry it alone. You cast your care on the One who cares for you.",
+  },
+  {
+    number: "2",
+    title: "Meet Him in His Word",
+    description:
+      "We walk with you to His table — Scripture matched to your season, daily prompts, and gentle guidance for where you actually are. Not a blank page, but a companion for the journey.",
+  },
+  {
+    number: "3",
+    title: "Let His Peace Shape Your Days",
+    description:
+      "As you sit with Him, His peace settles the heart — and the rest follows. Your plans, your habits, your ordinary days, lived from a place of rest instead of striving.",
+  },
+];
+
 const sitWithJesusFeatures = [
   {
     title: "Season-Tuned Devotionals",
@@ -214,9 +235,16 @@ export default function Home() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2 lg:gap-10">
           <div className="text-center lg:text-left">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-sage">Ecclesiastes 3</p>
-            <h1 className="mt-4 font-serif text-4xl font-semibold leading-tight text-deep-brown sm:text-5xl lg:text-6xl">
-              For everything there is a season.
+            <h1 className="mt-4 font-serif text-[2.5rem] font-semibold leading-tight text-[#26215C] sm:text-[3.35rem] lg:text-[4.15rem]">
+              Life moves in seasons.
             </h1>
+            <p className="mt-4 max-w-xl font-serif text-xl leading-relaxed text-deep-brown/75 sm:text-[1.35rem] lg:mx-0">
+              &ldquo;To every thing there is a season, and a time to every purpose under the
+              heaven.&rdquo;
+              <span className="mt-2 block text-base font-sans font-medium not-italic text-deep-brown/50">
+                — Ecclesiastes 3:1
+              </span>
+            </p>
             <h2 className="mt-6 font-serif text-2xl font-semibold leading-snug text-terracotta sm:text-3xl">
               Every season has a seat at His table.
             </h2>
@@ -225,7 +253,7 @@ export default function Home() {
               <SeasonMoments />
             </div>
 
-            <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-deep-brown/70 lg:mx-0">
+            <p className="mx-auto mt-8 max-w-xl text-xl leading-relaxed text-deep-brown/70 lg:mx-0">
               Wherever your season finds you, Christ meets you there. God works
               differently in different seasons — and faith is lived in the
               everyday, not only on the mountaintop.
@@ -249,6 +277,75 @@ export default function Home() {
 
           <div className="mx-auto w-full max-w-md lg:max-w-none">
             <HeroVisual />
+          </div>
+        </div>
+      </section>
+
+      {/* Empathy — full seasons */}
+      <section className="px-6 pb-12">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-lg leading-relaxed text-deep-brown/70">
+            Some seasons are full. The early mornings and the lost sleep. The doctor visits and
+            the demanding job. The unexpected bill, the child who needs you, the to-do list that
+            never ends. You love the Lord — but the days are loud, and quiet time with Him keeps
+            slipping to tomorrow.
+          </p>
+          <p className="mt-6 text-lg leading-relaxed text-deep-brown/70">
+            We understand — we&apos;ve all been there, and felt the frustration. But time with God
+            shouldn&apos;t be one more thing you&apos;re failing to get to. At His Table meets you
+            in the few minutes you have and ushers you into His presence — bringing His Word to
+            your season, so you can lay your burdens down instead of carrying them alone.
+          </p>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section id="how-it-works" className="border-t border-blush/40 bg-warm-white px-6 pb-16">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-sage">
+              How At His Table Works
+            </p>
+            <h2 className="mt-4 font-serif text-3xl font-semibold leading-snug text-deep-brown sm:text-4xl">
+              Bring Your Season to His Table
+            </h2>
+            <blockquote className="mx-auto mt-6 max-w-2xl font-serif text-lg italic leading-relaxed text-terracotta sm:text-xl">
+              &ldquo;Casting all your care upon him; for he careth for you.&rdquo;
+              <footer className="mt-2 text-sm font-sans font-medium not-italic text-deep-brown/50">
+                — 1 Peter 5:7
+              </footer>
+            </blockquote>
+            <p className="mt-6 text-lg leading-relaxed text-deep-brown/70">
+              Every season brings something to carry — the full hands of one day, the grief of
+              another. Martha learned it isn&apos;t ours to carry alone. When we bring our season
+              to Jesus, He meets us there — and we&apos;ll walk with you, every step.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            {howItWorksSteps.map((step) => (
+              <div
+                key={step.number}
+                className="rounded-2xl border border-blush/50 bg-cream/50 p-6 text-center shadow-sm md:text-left"
+              >
+                <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-terracotta/10 font-serif text-lg font-semibold text-terracotta md:mx-0">
+                  {step.number}
+                </div>
+                <h3 className="font-serif text-xl font-semibold text-deep-brown sm:text-2xl">
+                  {step.title}
+                </h3>
+                <p className="mt-3 leading-relaxed text-deep-brown/70">{step.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="font-serif text-xl leading-relaxed text-deep-brown sm:text-2xl">
+              Wherever this season finds you, there&apos;s a seat saved for you at His table.
+            </p>
+            <div className="mt-8">
+              <JoinButton />
+            </div>
           </div>
         </div>
       </section>
