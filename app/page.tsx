@@ -1,620 +1,341 @@
-import type { ReactNode } from "react";
-import { AssessmentGrid, SeasonMoments, SectionBackground } from "./components/HomeSections";
-import { TasteOfPersonalization } from "./components/TasteOfPersonalization";
-import {
-  EverySeasonVisual,
-  HeroVisual,
-  JourneyPhotoStrip,
-  JourneySection,
-  PhotoDirection,
-} from "./components/PhotoDirection";
-import { journeyPhotos } from "./lib/photography";
+import Link from "next/link";
+import Icon from "./components/Icon";
+import { SiteFooter, SiteHeader } from "./components/SiteChrome";
+import { examplePairs, plannerFeatures, rhythm, seasons } from "./lib/content";
 
-const audiences = [
-  "New believers",
-  "Women seeking deeper discipleship",
-  "Mothers",
-  "Professionals",
-  "Ministry leaders",
-  "Women in transition",
-  "Women carrying burdens",
-];
-
-const howItWorksSteps = [
-  {
-    number: "1",
-    title: "Bring What You're Carrying",
-    description:
-      "Each week, bring Him your season — what's weighing on you, what you long for. Like Martha running to meet Jesus, you don't carry it alone. You cast your care on the One who cares for you.",
-  },
-  {
-    number: "2",
-    title: "Meet Him in His Word",
-    description:
-      "We walk with you to His table — Scripture matched to your season, daily prompts, and gentle guidance for where you actually are. Not a blank page, but a companion for the journey.",
-  },
-  {
-    number: "3",
-    title: "Let His Peace Shape Your Days",
-    description:
-      "As you sit with Him, His peace settles the heart — and the rest follows. Your plans, your habits, your ordinary days, lived from a place of rest instead of striving.",
-  },
-];
-
-const sitWithJesusFeatures = [
-  {
-    title: "Season-Tuned Devotionals",
-    description:
-      "Short, soul-nourishing readings written for the season you're in — not a one-size-fits-all checklist.",
-    icon: (
-      <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Sacred Stillness",
-    description:
-      "Gentle prompts that draw you into Scripture and prayer — making space to sit at His feet before you step into your day.",
-    icon: (
-      <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-      </svg>
-    ),
-  },
-];
-
-const walkFeatures = [
-  {
-    title: "Guided Journal",
-    description:
-      "Thoughtful prompts rooted in Scripture help you process your season and grow with gentle guidance.",
-    icon: (
-      <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-      </svg>
-    ),
-  },
-  {
-    title: "Faithful Planner",
-    description:
-      "Organize your weeks with intention — balancing calling, rest, and relationships with Christ at the center.",
-    icon: (
-      <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-      </svg>
-    ),
-  },
-  {
-    title: "Prayer & Goals",
-    description:
-      "Record prayer requests, write goals, and plan family responsibilities — faith shaping everyday life.",
-    icon: (
-      <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-      </svg>
-    ),
-  },
-];
-
-const communityPillars = [
-  {
-    title: "Prayer",
-    description:
-      "Intercession rooted in real life — the joys, questions, and longings of your shared season.",
-  },
-  {
-    title: "Encouragement",
-    description:
-      "Sisters who understand where you are and speak life over your journey with Christ.",
-  },
-  {
-    title: "Wisdom",
-    description:
-      "Insight, Scripture, and gentle accountability from women walking similar paths.",
-  },
-  {
-    title: "Testimony",
-    description:
-      "Witness what God is doing and celebrate His faithfulness together around the table.",
-  },
-];
-
-const plans = [
-  {
-    name: "Monthly",
-    price: "$12",
-    period: "per month",
-    description:
-      "Begin your season with full access to every personalized resource and community feature.",
-    features: [
-      "Personalized season assessment",
-      "Custom faith journey path",
-      "Daily season-tuned devotionals",
-      "Guided journal & weekly planner",
-      "Community matched by season",
-    ],
-    highlighted: false,
-  },
-  {
-    name: "Annual",
-    price: "$99",
-    period: "per year",
-    description:
-      "Commit to a full year — two months free and deeper seasonal resources.",
-    features: [
-      "Everything in Monthly",
-      "Seasonal transition guides",
-      "Exclusive member gatherings",
-      "Annual reflection workbook",
-    ],
-    highlighted: true,
-  },
-];
-
-function JoinButton({
-  className = "",
-  size = "lg",
-  variant = "primary",
-  label = "Take Your Seat",
-  href = "#membership",
-}: {
-  className?: string;
-  size?: "lg" | "sm";
-  variant?: "primary" | "olive";
-  label?: string;
-  href?: string;
-}) {
-  const sizeClasses = size === "lg" ? "px-8 py-3.5 text-base" : "px-6 py-2.5 text-sm";
-  const colorClasses =
-    variant === "olive"
-      ? "bg-olive text-warm-white hover:bg-olive/90"
-      : "bg-terracotta text-warm-white hover:bg-deep-brown";
-
-  return (
-    <a
-      href={href}
-      className={`inline-flex items-center justify-center rounded-full font-medium shadow-md transition-all duration-300 hover:shadow-lg ${sizeClasses} ${colorClasses} ${className}`}
-    >
-      {label}
-    </a>
-  );
-}
-
-function FeatureCard({
-  title,
-  description,
-  icon,
-}: {
-  title: string;
-  description: string;
-  icon: ReactNode;
-}) {
-  return (
-    <div className="group rounded-2xl border border-blush/50 bg-warm-white p-6 shadow-sm transition-all duration-300 hover:border-rose/60 hover:shadow-md">
-      <div className="mb-4 inline-flex rounded-xl bg-blush/40 p-3 text-terracotta transition-colors group-hover:bg-blush/60">
-        {icon}
-      </div>
-      <h3 className="font-serif text-2xl font-semibold text-deep-brown">{title}</h3>
-      <p className="mt-3 leading-relaxed text-deep-brown/70">{description}</p>
-    </div>
-  );
-}
+/* eslint-disable @next/next/no-img-element */
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col bg-cream text-deep-brown">
-      <header className="sticky top-0 z-50 border-b border-blush/40 bg-warm-white/80 backdrop-blur-md">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div>
-            <span className="font-serif text-2xl font-semibold tracking-wide text-deep-brown">
-              At His Table
-            </span>
-            <p className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.25em] text-deep-brown/45">
-              For everything there is a season
-            </p>
-          </div>
-          <div className="hidden items-center gap-8 text-sm font-medium text-deep-brown/70 lg:flex">
-            <a href="#vision" className="transition-colors hover:text-terracotta">Vision</a>
-            <a href="#every-season" className="transition-colors hover:text-terracotta">Every Season</a>
-            <a href="#martha" className="transition-colors hover:text-terracotta">Martha</a>
-            <a href="#discover" className="transition-colors hover:text-terracotta">Your Journey</a>
-            <a href="#community" className="transition-colors hover:text-terracotta">Community</a>
-          </div>
-          <JoinButton size="sm" />
-        </nav>
-      </header>
-
-      {/* 1. Ecclesiastes 3 — Scripture & vision */}
-      <section id="vision" className="relative overflow-hidden px-6 pt-20 pb-16">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-blush/30 blur-3xl" />
-          <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-rose/20 blur-3xl" />
-        </div>
-
-        <div className="relative mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2 lg:gap-10">
-          <div className="text-center lg:text-left">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-sage">Ecclesiastes 3</p>
-            <h1 className="mt-4 font-serif text-[2.5rem] font-semibold leading-tight text-[#26215C] sm:text-[3.35rem] lg:text-[4.15rem]">
-              Life moves in seasons.
+    <>
+      <SiteHeader />
+      <main>
+        {/* ── Hero ─────────────────────────────────── */}
+        <section id="vision" className="hero">
+          <div className="hero-copy">
+            <p className="eyebrow">For busy women in every season</p>
+            <h1 className="display h1" style={{ maxWidth: 640 }}>
+              You weren&rsquo;t meant to walk this season alone.
             </h1>
-            <p className="mt-4 max-w-xl font-serif text-xl leading-relaxed text-deep-brown/75 sm:text-[1.35rem] lg:mx-0">
-              &ldquo;To every thing there is a season, and a time to every purpose under the
-              heaven.&rdquo;
-              <span className="mt-2 block text-base font-sans font-medium not-italic text-deep-brown/50">
-                — Ecclesiastes 3:1
-              </span>
+            <p className="lead" style={{ maxWidth: 580 }}>
+              A devotional planner and a story-driven series for the woman who carries everyone else. Come as
+              you are. There&rsquo;s a seat for you.
             </p>
-            <h2 className="mt-6 font-serif text-2xl font-semibold leading-snug text-terracotta sm:text-3xl">
-              Every season has a seat at His table.
-            </h2>
-
-            <div className="mx-auto mt-8 max-w-xl lg:mx-0">
-              <SeasonMoments />
-            </div>
-
-            <p className="mx-auto mt-8 max-w-xl text-xl leading-relaxed text-deep-brown/70 lg:mx-0">
-              Wherever your season finds you, Christ meets you there. God works
-              differently in different seasons — and faith is lived in the
-              everyday, not only on the mountaintop.
-            </p>
-
-            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-              <a
-                href="#every-season"
-                className="inline-flex items-center justify-center rounded-full bg-terracotta px-8 py-3.5 text-base font-medium text-warm-white shadow-md transition-all hover:bg-deep-brown hover:shadow-lg"
-              >
-                See yourself here
-              </a>
-              <a
-                href="#martha"
-                className="inline-flex items-center justify-center rounded-full border border-terracotta/30 px-8 py-3.5 text-base font-medium text-terracotta transition-colors hover:border-terracotta hover:bg-terracotta/5"
-              >
-                Read Martha&apos;s story
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 24 }}>
+              <Link href="/your-story" className="btn">
+                Take Your Seat <span aria-hidden="true">→</span>
+              </Link>
+              <a href="#series" className="link-arrow" style={{ display: "inline-flex", gap: 8, alignItems: "center" }}>
+                <Icon name="play" size={16} /> Watch Episode One
               </a>
             </div>
+            <p className="small">7 days free. Cancel anytime.</p>
           </div>
-
-          <div className="mx-auto w-full max-w-md lg:max-w-none">
-            <HeroVisual />
-          </div>
-        </div>
-      </section>
-
-      {/* Empathy — full seasons */}
-      <section className="px-6 pb-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-lg leading-relaxed text-deep-brown/70">
-            Some seasons are full. The early mornings and the lost sleep. The doctor visits and
-            the demanding job. The unexpected bill, the child who needs you, the to-do list that
-            never ends. You love the Lord — but the days are loud, and quiet time with Him keeps
-            slipping to tomorrow.
-          </p>
-          <p className="mt-6 text-lg leading-relaxed text-deep-brown/70">
-            We understand — we&apos;ve all been there, and felt the frustration. But time with God
-            shouldn&apos;t be one more thing you&apos;re failing to get to. At His Table meets you
-            in the few minutes you have and ushers you into His presence — bringing His Word to
-            your season, so you can lay your burdens down instead of carrying them alone.
-          </p>
-        </div>
-      </section>
-
-      {/* How it works */}
-      <section id="how-it-works" className="border-t border-blush/40 bg-warm-white px-6 pb-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-sage">
-              How At His Table Works
-            </p>
-            <h2 className="mt-4 font-serif text-3xl font-semibold leading-snug text-deep-brown sm:text-4xl">
-              Bring Your Season to His Table
-            </h2>
-            <blockquote className="mx-auto mt-6 max-w-2xl font-serif text-lg italic leading-relaxed text-terracotta sm:text-xl">
-              &ldquo;Casting all your care upon him; for he careth for you.&rdquo;
-              <footer className="mt-2 text-sm font-sans font-medium not-italic text-deep-brown/50">
-                — 1 Peter 5:7
-              </footer>
-            </blockquote>
-            <p className="mt-6 text-lg leading-relaxed text-deep-brown/70">
-              Every season brings something to carry — the full hands of one day, the grief of
-              another. Martha learned it isn&apos;t ours to carry alone. When we bring our season
-              to Jesus, He meets us there — and we&apos;ll walk with you, every step.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {howItWorksSteps.map((step) => (
-              <div
-                key={step.number}
-                className="rounded-2xl border border-blush/50 bg-cream/50 p-6 text-center shadow-sm md:text-left"
-              >
-                <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-terracotta/10 font-serif text-lg font-semibold text-terracotta md:mx-0">
-                  {step.number}
-                </div>
-                <h3 className="font-serif text-xl font-semibold text-deep-brown sm:text-2xl">
-                  {step.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-deep-brown/70">{step.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <p className="font-serif text-xl leading-relaxed text-deep-brown sm:text-2xl">
-              Wherever this season finds you, there&apos;s a seat saved for you at His table.
-            </p>
-            <div className="mt-8">
-              <JoinButton />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Every season — visual band of women */}
-      <section id="every-season" className="relative overflow-hidden border-y border-blush/40 bg-warm-white px-6 pb-16">
-        <SectionBackground />
-        <div className="relative mx-auto max-w-6xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-sage">Every Season</p>
-            <h2 className="font-serif text-3xl font-semibold leading-snug text-deep-brown sm:text-4xl">
-              Every woman is in a different season. Christ meets women in every season.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-deep-brown/70">
-              Transformation happens through presence, intentionality, and community —
-              not performance. You should see yourself in this story.
-            </p>
-          </div>
-
-          <div className="mt-10">
-            <EverySeasonVisual />
-          </div>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {audiences.map((audience) => (
-              <span
-                key={audience}
-                className="rounded-full border border-blush/60 bg-cream px-5 py-2.5 text-sm font-medium text-deep-brown/80"
-              >
-                {audience}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Martha — origin story */}
-      <section id="martha" className="px-6 pb-16">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-sage">
-            Why At His Table Exists
-          </p>
-          <h2 className="font-serif text-3xl font-semibold leading-snug text-deep-brown sm:text-4xl">
-            Martha learned that sitting at Jesus&apos; feet wasn&apos;t reserved
-            for easy seasons.
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-deep-brown/70">
-            At His Table began with Martha — a woman who discovered that
-            presence with Christ isn&apos;t a luxury for when life slows down.
-            It is the foundation for every season. Her story is the reason this
-            table exists — and every woman who follows finds her own path through
-            it.
-          </p>
-          <blockquote className="mx-auto mt-8 max-w-2xl border-l-2 border-gold pl-6 text-left font-serif text-xl italic leading-relaxed text-terracotta sm:text-2xl">
-            &ldquo;Martha, Martha, you are worried and upset about many things,
-            but few things are needed — or indeed only one.&rdquo;
-            <footer className="mt-3 text-sm font-sans font-medium not-italic text-deep-brown/50">
-              — Luke 10:41–42
-            </footer>
-          </blockquote>
-        </div>
-      </section>
-
-      {/* Journey arc overview */}
-      <section className="border-y border-blush/40 bg-warm-white px-6 pb-16">
-        <div className="mx-auto max-w-6xl">
-          <JourneyPhotoStrip />
-        </div>
-      </section>
-
-      {/* 4. Discover Your Season — Assessment */}
-      <section id="discover" className="border-y border-blush/40 bg-warm-white px-6 pb-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
-            <PhotoDirection
-              brief={journeyPhotos.discover}
-              className="shadow-lg lg:order-2"
-              sizes="(max-width: 1024px) 92vw, 520px"
+          <div className="hero-photo">
+            <img
+              src="/images/hero.jpg"
+              alt="Emily sits at the kitchen table with her coffee, Bible and planner while Heather smiles in the background"
             />
-            <div className="lg:order-1">
-              <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-terracotta">
-                Assessment
+          </div>
+        </section>
+
+        {/* ── Season picker ────────────────────────── */}
+        <section id="seasons" className="section" style={{ textAlign: "center" }}>
+          <div className="wrap stack" style={{ alignItems: "center", gap: 14 }}>
+            <h2 className="display h2">Where are you today?</h2>
+            <p className="lead">Choose the season that feels most like your heart right now.</p>
+          </div>
+          <div className="wrap grid-auto season-grid" style={{ marginTop: 44 }}>
+            {seasons.map((s) => (
+              <Link key={s.slug} href={`/your-story?season=${s.slug}`} className="card season-card">
+                <span className="season-icon">
+                  <Icon name="sprout" />
+                </span>
+                <span className="display" style={{ fontSize: 22 }}>
+                  {s.title}
+                </span>
+                <span style={{ fontSize: 15, color: "var(--muted)" }}>{s.line}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Your Story ───────────────────────────── */}
+        <section id="story" className="section" style={{ background: "var(--sand)" }}>
+          <div className="wrap stack" style={{ gap: 40 }}>
+            <div className="stack" style={{ maxWidth: 760, gap: 18 }}>
+              <p className="eyebrow">Your story</p>
+              <h2 className="display h2">There&rsquo;s a woman in Scripture who has walked where you are.</h2>
+              <p className="lead">
+                Tell us a little about your life: your season, your home, where you are with God and where you
+                long to go. We&rsquo;ll introduce you to a woman of the Bible who knows that road, and shape your
+                planner, devotions and journal around you.
               </p>
-              <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-sage">
-                Discover Your Season
-              </p>
-              <h2 className="font-serif text-3xl font-semibold leading-snug text-deep-brown sm:text-4xl">
-                What does your season look like when you&apos;re walking with Jesus through it?
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-deep-brown/70">
-                Every woman begins here — thoughtfully naming where you are in faith
-                and life. The assessment listens, then opens a path forward shaped
-                for your season.
-              </p>
-              <div className="mt-8">
-                <JoinButton variant="olive" label="Start Your Season Assessment" href="#membership" />
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 20 }}>
+                <Link href="/your-story" className="btn">
+                  Find Your Story <span aria-hidden="true">→</span>
+                </Link>
+                <p className="small">Five short questions. About two minutes.</p>
               </div>
             </div>
-          </div>
-
-          <div id="taste" className="mx-auto mt-10 max-w-2xl">
-            <TasteOfPersonalization />
-          </div>
-
-          <div className="mt-10">
-            <AssessmentGrid />
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Sit With Jesus */}
-      <JourneySection
-        id="sit-with-jesus"
-        eyebrow="Sit With Jesus"
-        title="Before you do anything, be with Him."
-        description="At His Table leads with presence, not content. A warm devotional moment — Bible open, quiet stillness, and time with Jesus before anything else is asked of you."
-        brief={journeyPhotos.sitWithJesus}
-        imageFirst
-        className="border-t border-blush/40"
-        below={
-          <div className="grid gap-6 sm:grid-cols-2">
-            {sitWithJesusFeatures.map((feature) => (
-              <FeatureCard key={feature.title} {...feature} />
-            ))}
-          </div>
-        }
-      />
-
-      {/* 6. Walk With Intention */}
-      <JourneySection
-        id="walk"
-        eyebrow="Walk With Intention"
-        title="Faith shaping everyday life."
-        description="With journal, Bible, and planner open, she shapes her week with intention — writing goals, recording prayer requests, and letting faith guide the everyday."
-        brief={journeyPhotos.walk}
-        className="border-t border-blush/40 bg-warm-white"
-        below={
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {walkFeatures.map((feature) => (
-              <FeatureCard key={feature.title} {...feature} />
-            ))}
-          </div>
-        }
-      />
-
-      {/* 7. Gather Around the Table */}
-      <JourneySection
-        id="community"
-        eyebrow="Gather Around the Table"
-        title="You weren't meant to walk this season alone."
-        description="A small group gathered for prayer, Bible study, or coffee — sisters matched by season, walking together with encouragement, wisdom, and gentle accountability."
-        brief={journeyPhotos.gather}
-        imageFirst
-        below={
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {communityPillars.map((pillar) => (
-              <div
-                key={pillar.title}
-                className="rounded-2xl border border-blush/50 bg-warm-white p-6 text-center shadow-sm"
-              >
-                <h3 className="font-serif text-xl font-semibold text-terracotta">{pillar.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-deep-brown/70">{pillar.description}</p>
-              </div>
-            ))}
-          </div>
-        }
-      />
-
-      {/* 8. Share Your Story */}
-      <JourneySection
-        id="share"
-        eyebrow="Share Your Story"
-        title="Your story strengthens others."
-        description="Every season carries a testimony. In her journal, she writes what God is doing — reflections, gratitude, and story — strengthening faith for everyone at the table."
-        brief={journeyPhotos.share}
-        className="border-t border-blush/40 bg-warm-white"
-      />
-
-      {/* 9. Membership */}
-      <section id="membership" className="border-t border-blush/40 px-6 pb-16">
-        <div className="mx-auto max-w-4xl">
-          <div className="mb-10 text-center">
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-sage">Take Your Seat</p>
-            <h2 className="font-serif text-3xl font-semibold text-deep-brown sm:text-4xl">
-              Your seat is waiting.
-            </h2>
-            <p className="mx-auto mt-4 max-w-lg text-deep-brown/70">
-              However you come — planting, waiting, mourning, or beginning again —
-              there is a place for you here. The assessment, devotionals, planner,
-              community, and testimony are our response to a God who meets you in
-              every season.
-            </p>
-          </div>
-
-          <div className="grid gap-8 sm:grid-cols-2">
-            {plans.map((plan) => (
-              <div
-                key={plan.name}
-                className={`relative flex flex-col rounded-2xl border p-8 ${
-                  plan.highlighted
-                    ? "border-terracotta bg-warm-white shadow-lg ring-1 ring-terracotta/20"
-                    : "border-blush/50 bg-warm-white shadow-sm"
-                }`}
-              >
-                {plan.highlighted && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-terracotta px-4 py-1 text-xs font-medium uppercase tracking-wider text-warm-white">
-                    Most Popular
-                  </span>
-                )}
-                <h3 className="font-serif text-2xl font-semibold text-deep-brown">{plan.name}</h3>
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="font-serif text-5xl font-semibold text-deep-brown">{plan.price}</span>
-                  <span className="text-deep-brown/50">{plan.period}</span>
+            <div className="grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", gap: 24 }}>
+              {examplePairs.map((p) => (
+                <div key={p.name} className="card stack" style={{ padding: 32, gap: 12 }}>
+                  <p style={{ margin: 0, fontStyle: "italic", color: "var(--muted)" }}>{p.who}</p>
+                  <div style={{ height: 1, background: "var(--line)" }} />
+                  <p className="label">You&rsquo;ll meet</p>
+                  <p className="display" style={{ fontSize: 30 }}>
+                    {p.name}
+                  </p>
+                  <p style={{ margin: 0, lineHeight: 1.6, color: "var(--ink-soft)" }}>{p.why}</p>
+                  <p style={{ margin: 0, fontSize: 14, fontWeight: 600, color: "var(--terracotta)" }}>{p.ref}</p>
                 </div>
-                <p className="mt-4 text-deep-brown/70">{plan.description}</p>
-                <ul className="mt-8 flex-1 space-y-3">
-                  {plan.features.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-deep-brown/80">
-                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <JoinButton
-                  className={`mt-8 w-full ${
-                    plan.highlighted
-                      ? ""
-                      : "!bg-transparent !text-terracotta ring-1 ring-terracotta/40 hover:!bg-terracotta hover:!text-warm-white"
-                  }`}
-                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Martha ───────────────────────────────── */}
+        <section id="martha" className="section" style={{ background: "var(--clay)" }}>
+          <div className="wrap stack" style={{ gap: 40 }}>
+            <div className="split">
+              <img
+                src="/images/table-mug.jpg"
+                alt="An At His Table mug waiting on the table"
+                style={{ width: "100%", height: 380, objectFit: "cover", borderRadius: 12 }}
+              />
+              <div className="stack">
+                <p className="eyebrow" style={{ color: "#5c2a1a" }}>
+                  Why the table
+                </p>
+                <h2 className="display h2" style={{ color: "var(--clay-ink)" }}>
+                  For every Martha who forgot she was invited to sit.
+                </h2>
+                <p className="lead" style={{ color: "#3a2630" }}>
+                  Martha opened her home to Jesus and then spent the whole visit in the kitchen, carrying it all
+                  alone. Jesus didn&rsquo;t love her less for it. He simply called her by name and showed her the
+                  better seat. At His Table is for the woman who serves everyone else and quietly wonders when
+                  there will be room for her. There is. It&rsquo;s already set.
+                </p>
+                <a href="#seasons" className="link-arrow" style={{ color: "var(--clay-ink)" }}>
+                  Find your seat →
+                </a>
+              </div>
+            </div>
+            <div className="grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
+              {[
+                {
+                  q: "“Martha, Martha, you are worried and troubled about many things. But one thing is needed.”",
+                  ref: "Luke 10:41–42 (NKJV)",
+                },
+                { q: "“Casting all your care upon Him, for He cares for you.”", ref: "1 Peter 5:7 (NKJV)" },
+              ].map((v) => (
+                <figure key={v.ref} style={{ margin: 0, background: "#faf1e8", borderRadius: 10, padding: 32 }}>
+                  <blockquote className="display" style={{ margin: "0 0 14px", fontSize: 23, lineHeight: 1.4, color: "var(--clay-ink)" }}>
+                    {v.q}
+                  </blockquote>
+                  <figcaption style={{ fontSize: 14, color: "#5c2a1a" }}>{v.ref}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Series ───────────────────────────────── */}
+        <section id="series" className="section series">
+          <div className="wrap stack" style={{ gap: 56 }}>
+            <div className="split">
+              <div className="player" role="img" aria-label="Episode One preview: Emily and Heather at the kitchen table">
+                <img src="/images/hero.jpg" alt="" />
+                <div className="player-badge">
+                  <span className="circle">
+                    <Icon name="play" size={28} />
+                  </span>
+                  Episode One · Coming soon
+                </div>
+              </div>
+              <div className="stack">
+                <p className="eyebrow">The series</p>
+                <h2 className="display h2">Two women. One table. Every season.</h2>
+                <p className="lead">
+                  Emily is holding it all together, or trying to. Heather has walked a few more seasons than she
+                  has. Each episode sits with them at the kitchen table for a real conversation about faith in the
+                  middle of an ordinary, overwhelming life. No sermons. No easy answers. Just honest talk and the
+                  God who meets us there.
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 18 }}>
+                  <Link href="/your-story" className="btn btn-light">
+                    Save my seat for Episode One
+                  </Link>
+                  <p className="small" style={{ color: "#cfc0c7" }}>
+                    New episodes with each season of the planner.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="grid-auto"
+              style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 32, borderTop: "1px solid var(--plum-line)", paddingTop: 40 }}
+            >
+              {[
+                {
+                  name: "Emily",
+                  img: "/images/emily.jpg",
+                  line: "“I keep thinking I’ll find time for God once things slow down. They never slow down.”",
+                },
+                {
+                  name: "Heather",
+                  img: "/images/heather.jpg",
+                  line: "“Honey, He’s not waiting for you to have it together. He set the table anyway.”",
+                },
+              ].map((c) => (
+                <div key={c.name} style={{ display: "flex", gap: 20, alignItems: "flex-start" }}>
+                  <img src={c.img} alt={c.name} style={{ width: 104, height: 128, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />
+                  <div className="stack" style={{ gap: 8 }}>
+                    <p className="display" style={{ fontSize: 26 }}>
+                      {c.name}
+                    </p>
+                    <p style={{ margin: 0, fontSize: 17, lineHeight: 1.55, color: "#e6dad2" }}>{c.line}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Daily rhythm ─────────────────────────── */}
+        <section className="section" style={{ textAlign: "center" }}>
+          <h2 className="display h2" style={{ marginBottom: 48 }}>
+            A daily rhythm for your walk with God.
+          </h2>
+          <div className="wrap grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))", gap: 32 }}>
+            {rhythm.map((r) => (
+              <div key={r.title} className="stack" style={{ alignItems: "center", gap: 10 }}>
+                <span className="season-icon" style={{ width: 64, height: 64 }}>
+                  <Icon name={r.icon} size={28} />
+                </span>
+                <p className="display" style={{ fontSize: 26 }}>
+                  {r.title}
+                </p>
+                <p style={{ margin: 0, fontSize: 16, color: "var(--muted)", maxWidth: 260 }}>{r.line}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="relative overflow-hidden border-t border-blush/40 bg-warm-white px-6 pb-16">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-3xl" />
-        </div>
-        <div className="relative mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-sage">Ecclesiastes 3:1</p>
-          <h2 className="mt-4 font-serif text-3xl font-semibold leading-snug text-deep-brown sm:text-4xl">
-            For everything there is a season, and a time for every matter under heaven.
+        {/* ── Planner ──────────────────────────────── */}
+        <section className="section" style={{ background: "var(--sand)" }}>
+          <div className="wrap split">
+            <div className="stack">
+              <p className="eyebrow">The planner</p>
+              <h2 className="display h2">A planner that makes room for God in the life you actually have.</h2>
+              <p className="lead">
+                Most planners ask what you need to get done. This one starts with where you are. Choose your
+                season, and your planner fills with Scripture, prayers and reflections written for it, alongside
+                space for the week ahead.
+              </p>
+              <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+                {plannerFeatures.map((f) => (
+                  <li key={f.title} style={{ padding: "14px 0", borderTop: "1px solid var(--line-strong)", lineHeight: 1.5 }}>
+                    <strong style={{ color: "var(--plum)" }}>{f.title}</strong> — {f.line}
+                  </li>
+                ))}
+              </ul>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 18 }}>
+                <Link href="/your-story" className="btn">
+                  Take Your Seat <span aria-hidden="true">→</span>
+                </Link>
+                <Link href="/planner" className="link-arrow" style={{ fontSize: 16 }}>
+                  See a sample week
+                </Link>
+              </div>
+              <p className="small">7 days free. Cancel anytime.</p>
+            </div>
+            <div className="card stack" style={{ padding: 28, gap: 16 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                <p className="display" style={{ fontSize: 26 }}>
+                  Your week, with God.
+                </p>
+                <span className="chip">Season: I Need Direction</span>
+              </div>
+              <div style={{ display: "flex", gap: 12, alignItems: "center", background: "var(--linen)", borderRadius: 10, padding: 14 }}>
+                <span
+                  className="display"
+                  style={{ width: 44, height: 44, borderRadius: "50%", background: "var(--plum)", color: "var(--cream)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}
+                >
+                  E
+                </span>
+                <p style={{ margin: 0, fontSize: 15, lineHeight: 1.4 }}>
+                  <strong style={{ color: "var(--plum)" }}>Walking with Elizabeth</strong>
+                  <br />A new calling in later years · Luke 1
+                </p>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(5, minmax(0, 1fr))", gap: 8 }}>
+                {[
+                  ["Mon", "Luke 1:45"],
+                  ["Tue", "Luke 1:13"],
+                  ["Wed", "Luke 1:24"],
+                  ["Thu", "Luke 1:41"],
+                  ["Fri", "Luke 1:58"],
+                ].map(([d, v]) => (
+                  <div key={d} style={{ border: "1px solid var(--line)", borderRadius: 8, padding: "10px 8px", display: "flex", flexDirection: "column", gap: 6, fontSize: 12 }}>
+                    <strong style={{ color: "var(--plum)" }}>{d}</strong>
+                    <span style={{ color: "var(--terracotta)" }}>{v}</span>
+                    <span style={{ height: 6, background: "var(--sand)", borderRadius: 3 }} />
+                    <span style={{ height: 6, background: "var(--sand)", borderRadius: 3, width: "70%" }} />
+                  </div>
+                ))}
+              </div>
+              <p className="small" style={{ borderTop: "1px solid var(--line)", paddingTop: 14 }}>
+                ▶ Watch, then reflect: Episode One, &ldquo;The Better Seat&rdquo;
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Stories ──────────────────────────────── */}
+        <section className="section" style={{ textAlign: "center" }}>
+          <h2 className="display h2" style={{ marginBottom: 16 }}>
+            You&rsquo;re not alone at the table.
           </h2>
-          <p className="mt-6 font-serif text-xl text-terracotta">
-            Every season has a seat at His table.
+          <p className="lead" style={{ margin: "0 auto 40px", maxWidth: 640 }}>
+            Real stories from the first women to take their seat will go here once early testing begins.
           </p>
-          <div className="mt-8">
-            <JoinButton />
+          {/* TODO: replace with real tester stories before launch */}
+          <div className="wrap grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
+            {["a young mom", "reacting to the series", "an empty nester"].map((t) => (
+              <div key={t} className="display" style={{ border: "1px dashed #c9b6a2", borderRadius: 12, padding: "40px 28px", fontSize: 21, color: "#7a6a72" }}>
+                [Tester story: {t}]
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <footer className="border-t border-blush/40 bg-cream px-6 py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
-          <div>
-            <span className="font-serif text-xl font-semibold text-deep-brown">At His Table</span>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-deep-brown/40">
-              For everything there is a season
-            </p>
-          </div>
-          <p className="text-sm text-deep-brown/50">
-            &copy; {new Date().getFullYear()} At His Table. All rights reserved.
+        {/* ── Closing ──────────────────────────────── */}
+        <section className="section stack" style={{ background: "var(--sand-deep)", textAlign: "center", alignItems: "center", gap: 22 }}>
+          <h2 className="display" style={{ fontSize: "clamp(40px, 5vw, 62px)" }}>
+            Your place is saved.
+          </h2>
+          <p className="lead" style={{ maxWidth: 620 }}>
+            Whatever season you&rsquo;re in, there&rsquo;s a seat with your name on it. Bring your coffee, your
+            questions and your tired heart.
           </p>
-        </div>
-      </footer>
-    </div>
+          <Link href="/your-story" className="btn">
+            Take Your Seat <span aria-hidden="true">→</span>
+          </Link>
+          <p className="small">7 days free. Cancel anytime.</p>
+          <figure style={{ margin: "24px 0 0" }}>
+            <blockquote className="display" style={{ margin: "0 0 10px", fontSize: 24, lineHeight: 1.45 }}>
+              &ldquo;To everything there is a season,
+              <br />a time for every purpose under heaven.&rdquo;
+            </blockquote>
+            <figcaption style={{ fontSize: 13, letterSpacing: "0.14em", color: "var(--terracotta-deep)" }}>
+              ECCLESIASTES 3:1 · NKJV
+            </figcaption>
+          </figure>
+        </section>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
