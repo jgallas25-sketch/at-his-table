@@ -33,11 +33,13 @@ export const examplePairs = [
   },
 ];
 
+// The daily rhythm, in order. It always begins with praise.
 export const rhythm = [
+  { title: "Praise", line: "Declare who God is and what He has done.", icon: "praise" },
   { title: "Scripture", line: "A little truth to carry with you.", icon: "book" },
-  { title: "Prayer", line: "A moment to speak from the heart.", icon: "hands" },
-  { title: "Reflection", line: "Space to listen and grow.", icon: "heart" },
-  { title: "Testimony", line: "Write down what God is doing.", icon: "pen" },
+  { title: "Reflection", line: "Space to listen and grow.", icon: "pen" },
+  { title: "Seek God", line: "Bring Him your heart in prayer.", icon: "hands" },
+  { title: "Gratitude", line: "Notice the good He has given.", icon: "heart" },
 ] as const;
 
 export const plannerFeatures = [

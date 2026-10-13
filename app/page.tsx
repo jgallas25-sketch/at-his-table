@@ -205,22 +205,29 @@ export default function Home() {
 
         {/* ── Daily rhythm ─────────────────────────── */}
         <section className="section" style={{ textAlign: "center" }}>
-          <h2 className="display h2" style={{ marginBottom: 48 }}>
+          <h2 className="display h2" style={{ marginBottom: 16 }}>
             A daily rhythm for your walk with God.
           </h2>
-          <div className="wrap grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))", gap: 32 }}>
-            {rhythm.map((r) => (
-              <div key={r.title} className="stack" style={{ alignItems: "center", gap: 10 }}>
+          <p className="lead" style={{ margin: "0 auto 48px", maxWidth: 620 }}>
+            Every morning at the table begins with praise, then moves through His Word, your heart, prayer and
+            thanks.
+          </p>
+          <ol className="wrap grid-auto rhythm" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 28, listStyle: "none", padding: 0 }}>
+            {rhythm.map((r, i) => (
+              <li key={r.title} className="stack" style={{ alignItems: "center", gap: 10 }}>
                 <span className="season-icon" style={{ width: 64, height: 64 }}>
                   <Icon name={r.icon} size={28} />
+                </span>
+                <span className="label" style={{ fontSize: 11 }}>
+                  Step {i + 1}
                 </span>
                 <p className="display" style={{ fontSize: 26 }}>
                   {r.title}
                 </p>
                 <p style={{ margin: 0, fontSize: 16, color: "var(--muted)", maxWidth: 260 }}>{r.line}</p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </section>
 
         {/* ── Planner ──────────────────────────────── */}

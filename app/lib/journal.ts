@@ -1,6 +1,6 @@
 // A simple journal kept in the member's own browser until accounts exist.
 
-export type JournalEntry = { tag: "Answered" | "Prayer" | "Reflection"; date: string; text: string; ref: string };
+export type JournalEntry = { tag: "Answered" | "Prayer" | "Reflection" | "Gratitude" | "Praise"; date: string; text: string; ref: string };
 
 export const JOURNAL_KEY = "aht-journal";
 

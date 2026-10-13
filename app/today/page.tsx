@@ -33,8 +33,24 @@ export default function TodayPage() {
             </p>
           </div>
 
+          <section className="stack" style={{ gap: 8, background: "var(--plum-dark)", color: "var(--cream)", borderRadius: 12, padding: 18 }}>
+            <p className="label" style={{ color: "var(--clay)" }}>
+              1 · Praise
+            </p>
+            <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "#e6dad2" }}>
+              Begin by declaring with your mouth who God is and what He has done. Say it out loud.
+            </p>
+            <blockquote className="display" style={{ margin: 0, fontSize: 18, lineHeight: 1.45, color: "var(--cream)" }}>
+              &ldquo;For He who is mighty has done great things for me, and holy is His name.&rdquo;
+            </blockquote>
+            <p style={{ margin: 0, fontSize: 13, color: "var(--clay)" }}>Luke 1:49 (NKJV)</p>
+            <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "#e6dad2", fontStyle: "italic" }}>
+              Lord, You are faithful. You are mighty. You remembered Elizabeth, and You remember me.
+            </p>
+          </section>
+
           <figure className="card stack" style={{ margin: 0, padding: 18, gap: 8 }}>
-            <p className="label">Scripture</p>
+            <p className="label">2 · Scripture</p>
             <blockquote className="display" style={{ margin: 0, fontSize: 19, lineHeight: 1.4 }}>
               &ldquo;Blessed is she who believed, for there will be a fulfillment of those things which were told her
               from the Lord.&rdquo;
@@ -56,16 +72,11 @@ export default function TodayPage() {
             </p>
           </section>
 
-          <section className="stack" style={{ gap: 6, background: "var(--sand)", borderRadius: 12, padding: 16 }}>
-            <p className="label" style={{ color: "var(--terracotta-deep)" }}>
-              Pray
-            </p>
-            <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "#3a2630", fontStyle: "italic" }}>
-              Lord, I don&rsquo;t know the next step. Help me trust that You do. Amen.
-            </p>
-          </section>
-
-          <Reflect prompt="Where do you need to hear that it isn’t too late?" scripture="Luke 1:45" />
+          <Reflect
+            prompt="Where do you need to hear that it isn’t too late?"
+            scripture="Luke 1:45"
+            prayer="Lord, I don’t know the next step. Help me trust that You do. Amen."
+          />
         </main>
         <AppTabBar active="/today" />
       </div>

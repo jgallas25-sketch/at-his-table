@@ -4,38 +4,84 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { addEntry } from "../lib/journal";
 
-export default function Reflect({ prompt, scripture }: { prompt: string; scripture: string }) {
-  const [text, setText] = useState("");
+const fieldStyle: React.CSSProperties = {
+  font: "15px var(--font-body)",
+  padding: 12,
+  border: "1px solid var(--line-strong)",
+  borderRadius: 8,
+  background: "#fff",
+  resize: "vertical",
+};
+
+function StepLabel({ n, children, htmlFor }: { n: number; children: React.ReactNode; htmlFor?: string }) {
+  return (
+    <label htmlFor={htmlFor} className="label">
+      {n} · {children}
+    </label>
+  );
+}
+
+/**
+ * Steps 3–5 of the daily rhythm: Reflection, Seek God and Gratitude.
+ * Saving writes the reflection and gratitude to the testimony journal.
+ */
+export default function Reflect({
+  prompt,
+  scripture,
+  prayer,
+}: {
+  prompt: string;
+  scripture: string;
+  prayer: string;
+}) {
+  const [reflection, setReflection] = useState("");
+  const [gratitude, setGratitude] = useState("");
   const router = useRouter();
 
   function save() {
-    if (text.trim()) {
-      addEntry({
-        tag: "Reflection",
-        date: new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }),
-        text: text.trim(),
-        ref: scripture,
-      });
-    }
+    const date = new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+    if (gratitude.trim()) addEntry({ tag: "Gratitude", date, text: gratitude.trim(), ref: "Today’s thanks" });
+    if (reflection.trim()) addEntry({ tag: "Reflection", date, text: reflection.trim(), ref: scripture });
     router.push("/journal");
   }
 
   return (
     <>
-      <div className="stack" style={{ gap: 8 }}>
-        <label htmlFor="reflect" className="label">
-          Reflect
-        </label>
+      <section className="stack" style={{ gap: 8 }}>
+        <StepLabel n={3} htmlFor="reflect">
+          Reflection
+        </StepLabel>
         <p style={{ margin: 0, fontSize: 15 }}>{prompt}</p>
         <textarea
           id="reflect"
           rows={3}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={reflection}
+          onChange={(e) => setReflection(e.target.value)}
           placeholder="Write a line or two…"
-          style={{ font: "15px var(--font-body)", padding: 12, border: "1px solid var(--line-strong)", borderRadius: 8, background: "#fff", resize: "vertical" }}
+          style={fieldStyle}
         />
-      </div>
+      </section>
+
+      <section className="stack" style={{ gap: 6, background: "var(--sand)", borderRadius: 12, padding: 16 }}>
+        <StepLabel n={4}>Seek God</StepLabel>
+        <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "#3a2630", fontStyle: "italic" }}>{prayer}</p>
+      </section>
+
+      <section className="stack" style={{ gap: 8 }}>
+        <StepLabel n={5} htmlFor="gratitude">
+          Gratitude
+        </StepLabel>
+        <p style={{ margin: 0, fontSize: 15 }}>Name one good gift He gave you yesterday.</p>
+        <textarea
+          id="gratitude"
+          rows={2}
+          value={gratitude}
+          onChange={(e) => setGratitude(e.target.value)}
+          placeholder="Thank You, Lord, for…"
+          style={fieldStyle}
+        />
+      </section>
+
       <button className="btn" style={{ width: "100%" }} onClick={save}>
         Save to my testimony journal
       </button>

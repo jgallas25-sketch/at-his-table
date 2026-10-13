@@ -1,4 +1,4 @@
-type IconName = "book" | "hands" | "heart" | "pen" | "play" | "sprout";
+type IconName = "book" | "hands" | "heart" | "pen" | "play" | "sprout" | "praise";
 
 const paths: Record<IconName, React.ReactNode> = {
   book: (
@@ -19,6 +19,12 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <path d="M4 20h4L19 9l-4-4L4 16z" />
       <path d="M13.5 6.5l4 4" />
+    </>
+  ),
+  praise: (
+    <>
+      <circle cx="12" cy="13" r="3.5" />
+      <path d="M12 4v2.5M5.6 6.6l1.8 1.8M18.4 6.6l-1.8 1.8M3.5 13H6M18 13h2.5M4 20h16" />
     </>
   ),
   play: <path d="M8 5v14l11-7z" fill="currentColor" stroke="none" />,
