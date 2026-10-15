@@ -102,7 +102,7 @@ export default function Home() {
               <img
                 src="/images/table-mug.jpg"
                 alt="An At His Table mug waiting on the table"
-                style={{ width: "100%", height: 380, objectFit: "cover", borderRadius: 12 }}
+                style={{ width: "100%", height: 380, objectFit: "cover", objectPosition: "50% 52%", borderRadius: 12 }}
               />
               <div className="stack">
                 <p className="eyebrow" style={{ color: "#5c2a1a" }}>
