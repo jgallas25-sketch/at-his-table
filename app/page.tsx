@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeroMedia from "./components/HeroMedia";
 import Icon from "./components/Icon";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
 import { examplePairs, plannerFeatures, rhythm, seasons } from "./lib/content";
@@ -32,10 +33,7 @@ export default function Home() {
             <p className="small">7 days free. Cancel anytime.</p>
           </div>
           <div className="hero-photo">
-            <img
-              src="/images/hero.jpg"
-              alt="Emily sits at the kitchen table with her coffee, Bible and planner while Heather smiles in the background"
-            />
+            <HeroMedia />
           </div>
         </section>
 
