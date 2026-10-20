@@ -12,6 +12,9 @@ export const metadata: Metadata = {
       "A devotional planner and a story-driven series for the woman who carries everyone else.",
     images: ["/images/hero.jpg"],
   },
+  appleWebApp: {
+    title: "At His Table",
+  },
 };
 
 export const viewport: Viewport = {
