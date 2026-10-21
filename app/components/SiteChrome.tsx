@@ -13,7 +13,7 @@ export function SiteHeader() {
     <header className="site-header">
       <Link href="/" aria-label="At His Table home">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo.png" alt="At His Table" style={{ height: 38, width: "auto" }} />
+        <img src="/images/logo.png" alt="At His Table" style={{ height: 44, width: "auto" }} />
       </Link>
       <nav aria-label="Main">
         {navLinks.map((l) => (
@@ -48,7 +48,7 @@ export function SiteFooter() {
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/logo.png" alt="At His Table" style={{ height: 34, width: "auto" }} />
+      <img src="/images/logo.png" alt="At His Table" style={{ height: 39, width: "auto" }} />
       <nav aria-label="Footer" style={{ display: "flex", flexWrap: "wrap", gap: 24, fontSize: 14 }}>
         {navLinks.map((l) => (
           <Link key={l.href} href={l.href}>
