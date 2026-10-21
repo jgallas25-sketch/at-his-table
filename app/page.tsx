@@ -378,7 +378,7 @@ export default function Home() {
                 <Link href="/your-story" className="btn">
                   Find Your Story <span aria-hidden="true">→</span>
                 </Link>
-                <p className="small">Five short questions. About two minutes.</p>
+                <p className="small">About 6 minutes. Skip anything you like.</p>
               </div>
             </div>
             <div className="grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", gap: 24 }}>
@@ -452,7 +452,7 @@ export default function Home() {
             Your seat is ready.
           </h2>
           <p className="lead" style={{ maxWidth: 620 }}>
-            Come as you are. Bring your coffee, your questions and your tired heart.
+            Come as you are. Bring your coffee, your questions and your heart.
           </p>
           <Link href="/your-story" className="btn">
             Take Your Seat <span aria-hidden="true">→</span>
