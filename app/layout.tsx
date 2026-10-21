@@ -3,13 +3,13 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://at-his-table.vercel.app"),
-  title: "At His Table – You weren't meant to walk this season alone",
+  title: "At His Table – A devotional journal built around you",
   description:
-    "A devotional planner and a story-driven series for the woman who carries everyone else. Come as you are. There's a seat for you.",
+    "A devotional journal built around your life and grounded in His Word, so you can sit at the table with Jesus every day.",
   openGraph: {
     title: "At His Table",
     description:
-      "A devotional planner and a story-driven series for the woman who carries everyone else.",
+      "A devotional journal built around your life and grounded in His Word.",
     images: ["/images/hero.jpg"],
   },
   appleWebApp: {

@@ -14,13 +14,17 @@ export default function Home() {
         {/* ── Hero ─────────────────────────────────── */}
         <section id="vision" className="hero">
           <div className="hero-copy">
-            <p className="eyebrow">For busy women in every season</p>
+            <p className="eyebrow">A devotional journal built around you</p>
+            <p className="display" style={{ fontStyle: "italic", fontSize: "clamp(19px, 1.7vw, 23px)", lineHeight: 1.45, color: "var(--ink-soft)", maxWidth: 580 }}>
+              You carry everyone&rsquo;s schedule, everyone&rsquo;s needs &mdash; and your time with God keeps getting
+              squeezed out.
+            </p>
             <h1 className="display h1" style={{ maxWidth: 640 }}>
-              You weren&rsquo;t meant to walk this season alone.
+              There&rsquo;s a seat at His table with your name on it.
             </h1>
             <p className="lead" style={{ maxWidth: 580 }}>
-              A devotional planner and a story-driven series for the woman who carries everyone else. Come as
-              you are. There&rsquo;s a seat for you.
+              Not another planner. A daily walk built around your life &mdash; your season, your story, what
+              you&rsquo;re carrying right now &mdash; and pointed toward Him.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 24 }}>
               <Link href="/your-story" className="btn">
@@ -41,7 +45,7 @@ export default function Home() {
         <section id="seasons" className="section" style={{ textAlign: "center" }}>
           <div className="wrap stack" style={{ alignItems: "center", gap: 14 }}>
             <h2 className="display h2">Where are you today?</h2>
-            <p className="lead">Choose the season that feels most like your heart right now.</p>
+            <p className="lead">Tap the one that feels most like your life right now. We&rsquo;ll start your story from there.</p>
           </div>
           <div className="wrap grid-auto season-grid" style={{ marginTop: 44 }}>
             {seasons.map((s) => (
@@ -56,6 +60,25 @@ export default function Home() {
               </Link>
             ))}
           </div>
+          <p
+            className="display"
+            style={{ fontStyle: "italic", fontSize: "clamp(18px, 1.6vw, 21px)", lineHeight: 1.5, color: "var(--ink-soft)", maxWidth: 660, margin: "40px auto 0" }}
+          >
+            Sometimes life is full of good things &mdash; and that&rsquo;s when time with Him slips away first. Hard
+            seasons, new seasons, happy seasons: every one has a seat at His table.
+          </p>
+        </section>
+
+        {/* ── Started before ───────────────────────── */}
+        <section className="section stack" style={{ textAlign: "center", alignItems: "center", gap: 18, paddingTop: 0 }}>
+          <p className="display" style={{ fontStyle: "italic", fontSize: "clamp(21px, 2vw, 27px)", lineHeight: 1.45, color: "var(--ink-soft)", maxWidth: 760 }}>
+            If you&rsquo;ve started a devotional and stopped, you&rsquo;re not alone. Most were never built for your life.
+          </p>
+          <h2 className="display h2">This one is.</h2>
+          <p className="lead" style={{ maxWidth: 680 }}>
+            At His Table learns who you are and where you are with God, then walks with you every day &mdash;
+            alongside a woman of Scripture who&rsquo;s been exactly where you are.
+          </p>
         </section>
 
         {/* ── Your Story ───────────────────────────── */}
@@ -87,6 +110,34 @@ export default function Home() {
                   </p>
                   <p style={{ margin: 0, lineHeight: 1.6, color: "var(--ink-soft)" }}>{p.why}</p>
                   <p style={{ margin: 0, fontSize: 14, fontWeight: 600, color: "var(--terracotta)" }}>{p.ref}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── More than a planner ───────────────────── */}
+        <section className="section">
+          <div className="wrap stack" style={{ gap: 44 }}>
+            <div className="stack" style={{ textAlign: "center", alignItems: "center", gap: 14 }}>
+              <h2 className="display h2">More than a planner. Made for you.</h2>
+              <p className="lead" style={{ maxWidth: 680 }}>
+                Other devotionals hand you a tool and leave you to do the work. At His Table meets you where you are
+                and walks with you.
+              </p>
+            </div>
+            <div className="grid-auto" style={{ gap: 20 }}>
+              {[
+                { t: "Planner", l: "Built around your real schedule and the minutes you really have." },
+                { t: "Devotional guide", l: "Each day speaks to your season and what you\u2019re carrying right now." },
+                { t: "Study in the Word", l: "Walk alongside a woman of Scripture who has been where you are." },
+                { t: "Testimony journal", l: "Your prayers and His answers, kept so you can look back and remember." },
+              ].map((c) => (
+                <div key={c.t} className="card stack" style={{ padding: 28, gap: 10 }}>
+                  <p className="display" style={{ fontSize: 24 }}>
+                    {c.t}
+                  </p>
+                  <p style={{ margin: 0, fontSize: 16, lineHeight: 1.55, color: "var(--ink-soft)" }}>{c.l}</p>
                 </div>
               ))}
             </div>
@@ -316,10 +367,39 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── Mission ──────────────────────────────── */}
+        <section id="mission" className="section series">
+          <div className="wrap split">
+            <img
+              src="/images/hero-woman-bible.jpg"
+              alt="A woman writing in her journal beside an open Bible"
+              style={{ width: "100%", height: 420, objectFit: "cover", borderRadius: 12 }}
+            />
+            <div className="stack">
+              <p className="eyebrow">Our mission</p>
+              <h2 className="display h2">
+                To help the busy woman draw closer to God, one day at a time, in the life she actually has.
+              </h2>
+              <p className="lead">
+                Most devotionals are written for women in general. At His Table is written for you &mdash; grounded in
+                the Word of God, because Scripture holds the answers for the woman who is stretched thin and
+                doesn&rsquo;t know where to start.
+              </p>
+              <figure style={{ margin: "8px 0 0" }}>
+                <blockquote className="display" style={{ margin: "0 0 12px", fontStyle: "italic", fontSize: 22, lineHeight: 1.5 }}>
+                  &ldquo;Behold, I stand at the door and knock. If anyone hears My voice and opens the door, I will come
+                  in to him and dine with him, and he with Me.&rdquo;
+                </blockquote>
+                <figcaption style={{ fontSize: 13, letterSpacing: "0.14em", color: "var(--clay)" }}>REVELATION 3:20 · NKJV</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
         {/* ── Closing ──────────────────────────────── */}
         <section className="section stack" style={{ background: "var(--sand-deep)", textAlign: "center", alignItems: "center", gap: 22 }}>
           <h2 className="display" style={{ fontSize: "clamp(40px, 5vw, 62px)" }}>
-            Your place is saved.
+            Every season has a seat at His table.
           </h2>
           <p className="lead" style={{ maxWidth: 620 }}>
             Whatever season you&rsquo;re in, there&rsquo;s a seat with your name on it. Bring your coffee, your

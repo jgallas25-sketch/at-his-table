@@ -2,13 +2,21 @@
 // Scripture framing and pairings are pending pastor review.
 
 export const seasons = [
-  { slug: "grow", title: "I Want to Grow", line: "A little deeper in faith." },
-  { slug: "grateful", title: "I’m Grateful Today", line: "A moment to notice His goodness." },
-  { slug: "direction", title: "I Need Direction", line: "Space to listen for what’s next." },
-  { slug: "through-something", title: "I’m Going Through Something", line: "You don’t have to walk alone." },
-  { slug: "good-place", title: "I’m in a Good Place", line: "Stay grateful and grounded." },
+  { slug: "little-ones", title: "Raising Little Ones", line: "Strength for full hands and short nights." },
+  { slug: "caring-parent", title: "Caring for a Parent", line: "Rest for the one who cares for everyone." },
+  { slug: "single", title: "I’m Single", line: "A whole life, held in His hands." },
+  { slug: "divorced", title: "I’m Divorced", line: "Healing, and room to begin again." },
   { slug: "relationships", title: "Relationships & Family", line: "Bring your relationships to God." },
+  { slug: "empty-nest", title: "Empty Nest", line: "A new season, and a new calling." },
+  { slug: "new-home", title: "Starting a New Home", line: "Making room for Him from the start." },
+  { slug: "new-job", title: "Starting a New Job", line: "Wisdom and peace for what’s new." },
+  { slug: "busy-good", title: "Busy with Good Things", line: "Don’t let the good crowd out the best." },
+  { slug: "good-place", title: "I’m in a Good Place", line: "Stay grateful and grounded." },
+  { slug: "grateful", title: "I’m Grateful Today", line: "A moment to notice His goodness." },
+  { slug: "grow", title: "I Want to Grow", line: "A little deeper in faith." },
+  { slug: "direction", title: "I Need Direction", line: "Space to listen for what’s next." },
   { slug: "financial", title: "Financial Pressure", line: "Faith for what you’re facing." },
+  { slug: "through-something", title: "I’m Going Through Something", line: "You don’t have to walk alone." },
   { slug: "fresh-start", title: "I Need a Fresh Start", line: "There is room to begin again." },
 ] as const;
 
@@ -72,7 +80,7 @@ export const questions = [
     options: ["Deeper prayer", "Knowing His Word", "Peace in the storm", "Healing", "Purpose and calling"],
   },
   {
-    title: "What’s weighing on you most?",
+    title: "Which of these feels most like your life right now?",
     options: seasons.map((s) => s.title as string),
   },
 ];
