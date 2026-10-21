@@ -1,23 +1,26 @@
 // All site copy that appears in lists lives here, so it can be edited in one place.
 // Scripture framing and pairings are pending pastor review.
 
+// Season photos are AI-generated (Higgsfield) and served from its CDN.
+const SEASON_IMG = "https://d8j0ntlcm91z4.cloudfront.net/user_3F0QoPgZBOkWEuVFH5CmKCoX8Q3/";
+
 export const seasons = [
-  { slug: "little-ones", title: "Raising Little Ones", line: "Strength for full hands and short nights." },
-  { slug: "caring-parent", title: "Caring for a Parent", line: "Rest for the one who cares for everyone." },
-  { slug: "single", title: "I’m Single", line: "A whole life, held in His hands." },
-  { slug: "divorced", title: "I’m Divorced", line: "Healing, and room to begin again." },
-  { slug: "relationships", title: "Relationships & Family", line: "Bring your relationships to God." },
-  { slug: "empty-nest", title: "Empty Nest", line: "A new season, and a new calling." },
-  { slug: "new-home", title: "Starting a New Home", line: "Making room for Him from the start." },
-  { slug: "new-job", title: "Starting a New Job", line: "Wisdom and peace for what’s new." },
-  { slug: "busy-good", title: "Busy with Good Things", line: "Don’t let the good crowd out the best." },
-  { slug: "good-place", title: "I’m in a Good Place", line: "Stay grateful and grounded." },
-  { slug: "grateful", title: "I’m Grateful Today", line: "A moment to notice His goodness." },
-  { slug: "grow", title: "I Want to Grow", line: "A little deeper in faith." },
-  { slug: "direction", title: "I Need Direction", line: "Space to listen for what’s next." },
-  { slug: "financial", title: "Financial Pressure", line: "Faith for what you’re facing." },
-  { slug: "through-something", title: "I’m Going Through Something", line: "You don’t have to walk alone." },
-  { slug: "fresh-start", title: "I Need a Fresh Start", line: "There is room to begin again." },
+  { slug: "little-ones", title: "Raising Little Ones", line: "Strength for full hands and short nights.", img: SEASON_IMG + "hf_20261021_224831_0591d57c-ab2a-4e8d-ab9d-0dad308b08df.png" },
+  { slug: "caring-parent", title: "Caring for a Parent", line: "Rest for the one who cares for everyone.", img: SEASON_IMG + "hf_20261021_224756_6b1b7687-f52d-425b-9e52-a480498f32ab.png" },
+  { slug: "single", title: "I’m Single", line: "A whole life, held in His hands.", img: SEASON_IMG + "hf_20261021_224755_eb95b910-2f2f-4b40-8c74-3227bc35ef28.png" },
+  { slug: "divorced", title: "I’m Divorced", line: "Healing, and room to begin again.", img: SEASON_IMG + "hf_20261021_224756_4d6645ad-7b54-4f25-9624-32dd843da4a7.png" },
+  { slug: "relationships", title: "Relationships & Family", line: "Bring your relationships to God.", img: SEASON_IMG + "hf_20261021_224757_e4737e8e-e88b-44ce-b99b-41f48d41bee4.png" },
+  { slug: "empty-nest", title: "Empty Nest", line: "A new season, and a new calling.", img: SEASON_IMG + "hf_20261021_224756_143ac6d9-2572-4694-999c-a3e807c79f36.png" },
+  { slug: "new-home", title: "Starting a New Home", line: "Making room for Him from the start.", img: SEASON_IMG + "hf_20261021_224757_a452ddf2-fcb1-42fe-8e79-be4beb16d8a2.png" },
+  { slug: "new-job", title: "Starting a New Job", line: "Wisdom and peace for what’s new.", img: SEASON_IMG + "hf_20261021_224756_9d03d8b6-83c8-4ae6-baed-737fd840cd5e.png" },
+  { slug: "busy-good", title: "Busy with Good Things", line: "Don’t let the good crowd out the best.", img: SEASON_IMG + "hf_20261021_224755_cec613ba-bf25-4afe-957a-a16a656a49ad.png" },
+  { slug: "good-place", title: "I’m in a Good Place", line: "Stay grateful and grounded.", img: SEASON_IMG + "hf_20261021_224757_783c013d-3cf2-4640-9248-cefeb1ad5adf.png" },
+  { slug: "grateful", title: "I’m Grateful Today", line: "A moment to notice His goodness.", img: SEASON_IMG + "hf_20261021_224757_420b9961-1860-43f9-bdc6-ca717a6f621d.png" },
+  { slug: "grow", title: "I Want to Grow", line: "A little deeper in faith.", img: SEASON_IMG + "hf_20261021_224757_ee7cf35d-d8f3-4227-a99e-ab6c12cb26ea.png" },
+  { slug: "direction", title: "I Need Direction", line: "Space to listen for what’s next.", img: SEASON_IMG + "hf_20261021_224800_757d26ea-68a8-435e-8885-a7f4158eae7d.png" },
+  { slug: "financial", title: "Financial Pressure", line: "Faith for what you’re facing.", img: SEASON_IMG + "hf_20261021_224801_fbb3bc29-cc2f-4401-83ec-5149a872090b.png" },
+  { slug: "through-something", title: "I’m Going Through Something", line: "You don’t have to walk alone.", img: SEASON_IMG + "hf_20261021_224802_83fc7f71-1d4e-46af-9010-cbae4c486ace.png" },
+  { slug: "fresh-start", title: "I Need a Fresh Start", line: "There is room to begin again.", img: SEASON_IMG + "hf_20261021_224801_d57834fd-c4bf-4964-a0b2-00cde906baf6.png" },
 ] as const;
 
 export const examplePairs = [

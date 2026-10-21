@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import HeroMedia from "./components/HeroMedia";
 import Icon from "./components/Icon";
@@ -57,14 +58,14 @@ export default function Home() {
               <p className="lead">
                 Most devotionals are written for women in general. At His Table is written for you &mdash; grounded in
                 the Word of God, because Scripture holds the answers for the woman who is stretched thin and
-                doesn&rsquo;t know where to start.
+                wants a place to start.
               </p>
               <figure style={{ margin: "8px 0 0" }}>
                 <blockquote className="display" style={{ margin: "0 0 12px", fontStyle: "italic", fontSize: 22, lineHeight: 1.5 }}>
-                  &ldquo;Behold, I stand at the door and knock. If anyone hears My voice and opens the door, I will come
-                  in to him and dine with him, and he with Me.&rdquo;
+                  &ldquo;The LORD your God in your midst, the Mighty One, will save; He will rejoice over you with
+                  gladness, He will quiet you with His love, He will rejoice over you with singing.&rdquo;
                 </blockquote>
-                <figcaption style={{ fontSize: 13, letterSpacing: "0.14em", color: "var(--clay)" }}>REVELATION 3:20 · NKJV</figcaption>
+                <figcaption style={{ fontSize: 13, letterSpacing: "0.14em", color: "var(--clay)" }}>ZEPHANIAH 3:17 · NKJV</figcaption>
               </figure>
             </div>
           </div>
@@ -76,8 +77,8 @@ export default function Home() {
             Every season has a seat at His table.
           </h2>
           <p className="lead" style={{ maxWidth: 620 }}>
-            Whatever season you&rsquo;re in, there&rsquo;s a seat with your name on it. Bring your coffee, your
-            questions and your tired heart.
+            Whatever season you&rsquo;re in, there&rsquo;s a seat for you with your name on it. Bring your coffee,
+            your questions and your heart.
           </p>
           <figure style={{ margin: "12px 0 0" }}>
             <blockquote className="display" style={{ margin: "0 0 10px", fontSize: 24, lineHeight: 1.45 }}>
@@ -406,13 +407,15 @@ export default function Home() {
           <div className="wrap grid-auto season-grid" style={{ marginTop: 44 }}>
             {seasons.map((s) => (
               <Link key={s.slug} href={`/your-story?season=${s.slug}`} className="card season-card">
-                <span className="season-icon">
-                  <Icon name="sprout" />
+                <span className="season-photo">
+                  <Image src={s.img} alt="" fill sizes="(max-width: 560px) 50vw, 290px" />
                 </span>
-                <span className="display" style={{ fontSize: 22 }}>
-                  {s.title}
+                <span className="season-text">
+                  <span className="display" style={{ fontSize: 22 }}>
+                    {s.title}
+                  </span>
+                  <span style={{ fontSize: 15, color: "var(--muted)" }}>{s.line}</span>
                 </span>
-                <span style={{ fontSize: 15, color: "var(--muted)" }}>{s.line}</span>
               </Link>
             ))}
           </div>

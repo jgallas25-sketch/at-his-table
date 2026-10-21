@@ -112,16 +112,19 @@ img { max-width: 100%; display: block; }
 
 /* ── Season cards ───────────────────────────────────────── */
 .season-card {
-  display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;
-  padding: 30px 22px; text-decoration: none; color: var(--ink);
+  display: flex; flex-direction: column; text-align: center; overflow: hidden;
+  padding: 0; text-decoration: none; color: var(--ink);
   transition: transform .2s, border-color .2s, box-shadow .2s;
 }
+.season-photo { position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; background: var(--sand); }
+.season-photo img { object-fit: cover; transition: transform .4s; }
+.season-card:hover .season-photo img { transform: scale(1.04); }
+.season-text { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 18px 16px 22px; }
 .season-card:hover { transform: translateY(-3px); border-color: var(--terracotta); box-shadow: 0 10px 24px rgba(74, 31, 61, 0.08); color: var(--ink); }
 @media (max-width: 560px) {
   .season-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .season-card { padding: 20px 12px; gap: 8px; }
+  .season-text { padding: 12px 10px 16px; gap: 6px; }
   .season-card .display { font-size: 18px !important; }
-  .season-card .season-icon { width: 40px; height: 40px; }
 }
 .season-icon {
   width: 52px; height: 52px; border-radius: 50%; background: var(--blush); color: var(--terracotta);
