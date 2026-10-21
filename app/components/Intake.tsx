@@ -159,9 +159,7 @@ export default function Intake({ seasonSlug }: { seasonSlug?: string }) {
               </button>
             )}
             <p className="small" style={{ textAlign: "center", fontSize: 13, lineHeight: 1.5 }}>
-              Your story stays private. For now it&rsquo;s saved only on this device. At His Table is a devotional journal,
-              not a replacement for your pastor, a counselor or professional help.{" "}
-              <Link href="/care">Your care and privacy</Link>
+              Your story stays private and is saved only on this device. <Link href="/care">Care &amp; privacy</Link>
             </p>
           </div>
         )}
@@ -423,9 +421,6 @@ function QuestionScreen({
       <button className="ghost" style={{ alignSelf: "center", marginTop: 4 }} onClick={onSkip}>
         Skip this question
       </button>
-      <Link href="/care#help" className="small" style={{ alignSelf: "center", marginTop: "auto", paddingTop: 12, fontSize: 13 }}>
-        Need someone to talk to right now?
-      </Link>
     </div>
   );
 }

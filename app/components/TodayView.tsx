@@ -119,8 +119,8 @@ export default function TodayView() {
             </section>
           )}
 
-          <Link href="/care#help" className="small" style={{ alignSelf: "center", fontSize: 13 }}>
-            Need someone to talk to right now?
+          <Link href="/care" className="small" style={{ alignSelf: "center", fontSize: 13 }}>
+            Care &amp; privacy
           </Link>
         </main>
         <AppTabBar active="/today" />
