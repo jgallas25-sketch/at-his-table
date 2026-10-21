@@ -58,7 +58,7 @@ export function SiteFooter() {
       </nav>
       <div style={{ display: "flex", gap: 20, fontSize: 13 }}>
         <a href="#">Terms</a>
-        <a href="#">Privacy</a>
+        <Link href="/care">Care &amp; Privacy</Link>
         <a href="mailto:jgallas25@gmail.com">Contact</a>
       </div>
     </footer>

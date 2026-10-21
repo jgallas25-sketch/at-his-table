@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { type Profile, heaviest, loadProfile, minutesLabel } from "../lib/story";
+import { type Profile, heaviest, loadProfile, minutesLabel, needsCompany } from "../lib/story";
 import { women } from "../lib/women";
 import Reflect from "./Reflect";
 import { AppTabBar } from "./SiteChrome";
@@ -103,6 +103,25 @@ export default function TodayView() {
           </section>
 
           <Reflect prompt={w.prompt} scripture={w.verse.ref} prayer={w.prayer} />
+
+          {profile && needsCompany(a) && (
+            <section className="stack" style={{ gap: 8, background: "var(--blush)", borderRadius: 12, padding: 18 }}>
+              <h2 className="display" style={{ fontSize: 20 }}>
+                You don&rsquo;t have to carry this alone.
+              </h2>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)" }}>
+                Along with your time at the table, consider sharing what&rsquo;s on your heart with your pastor or a trusted
+                friend this week. God often sends His comfort through people.
+              </p>
+              <Link href="/care" style={{ fontSize: 15, fontWeight: 600 }}>
+                When to reach out →
+              </Link>
+            </section>
+          )}
+
+          <Link href="/care#help" className="small" style={{ alignSelf: "center", fontSize: 13 }}>
+            Need someone to talk to right now?
+          </Link>
         </main>
         <AppTabBar active="/today" />
       </div>

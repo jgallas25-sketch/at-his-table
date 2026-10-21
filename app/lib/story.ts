@@ -582,10 +582,27 @@ const dangerWords = [
 
 export type SafetyNeed = "harm" | "danger" | null;
 
+/** Check anything she writes (story or journal) for signs she needs a person right away. */
+export function textNeed(text: string): SafetyNeed {
+  if (harmWords.some((r) => r.test(text))) return "harm";
+  if (dangerWords.some((r) => r.test(text))) return "danger";
+  return null;
+}
+
+/** Heavier seasons get a gentle nudge toward a pastor or friend (not a crisis). */
+export function needsCompany(a: Answers): boolean {
+  const heavy = ["Grief", "Loneliness", "Anger or bitterness", "Shame or regret", "Worry or anxiety"];
+  return (
+    heavy.includes(heaviest(a)) ||
+    one(a, "walk") === "I’m hurting and have questions" ||
+    ["Not really", "I used to"].includes(one(a, "friends"))
+  );
+}
+
 export function safetyNeed(a: Answers): SafetyNeed {
-  const words = one(a, "words");
-  if (harmWords.some((r) => r.test(words))) return "harm";
-  if (list(a, "together").includes(UNSAFE) || dangerWords.some((r) => r.test(words))) return "danger";
+  const need = textNeed(one(a, "words"));
+  if (need === "harm") return "harm";
+  if (list(a, "together").includes(UNSAFE) || need === "danger") return "danger";
   return null;
 }
 

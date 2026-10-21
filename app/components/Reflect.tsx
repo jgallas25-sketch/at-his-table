@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { addEntry } from "../lib/journal";
+import { type SafetyNeed, textNeed } from "../lib/story";
+import HelpNumbers from "./HelpNumbers";
 
 const fieldStyle: React.CSSProperties = {
   font: "15px var(--font-body)",
@@ -37,12 +39,37 @@ export default function Reflect({
   const [reflection, setReflection] = useState("");
   const [gratitude, setGratitude] = useState("");
   const router = useRouter();
+  const [help, setHelp] = useState<SafetyNeed>(null);
 
   function save() {
     const date = new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
     if (gratitude.trim()) addEntry({ tag: "Gratitude", date, text: gratitude.trim(), ref: "Today’s thanks" });
     if (reflection.trim()) addEntry({ tag: "Reflection", date, text: reflection.trim(), ref: scripture });
+    // If what she wrote suggests she may be in danger, point her to a person first.
+    const need = textNeed(`${reflection} ${gratitude}`);
+    if (need) {
+      setHelp(need);
+      return;
+    }
     router.push("/journal");
+  }
+
+  if (help) {
+    return (
+      <section className="stack" role="alert" style={{ gap: 12 }}>
+        <h2 className="display" style={{ fontSize: 22 }}>
+          Thank you for writing that down. You matter.
+        </h2>
+        <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)" }}>
+          Your words are saved in your journal. What you wrote sounds heavy, and you don&rsquo;t have to carry it alone.
+          Please reach out to someone today: your pastor, a trusted friend, or one of these.
+        </p>
+        <HelpNumbers only={help} />
+        <button className="btn" style={{ width: "100%" }} onClick={() => router.push("/journal")}>
+          Go to my journal
+        </button>
+      </section>
+    );
   }
 
   return (
