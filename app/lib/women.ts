@@ -203,7 +203,7 @@ export const women: Record<string, Woman> = {
     why: "She waited far longer than she hoped, and learned that nothing is too hard for the Lord.",
     ref: "Genesis 18:1–15; 21:1–7",
     verse: { text: "Is anything too hard for the LORD?", ref: "Genesis 18:14" },
-    praise: "Nothing is too hard for You. You kept Your promise to Sarah, and You are faithful to me.",
+    praise: "nothing is too hard for You. You kept Your promise to Sarah, and You are faithful to me.",
     title: "While you wait",
     devotion:
       "Sarah laughed because the promise sounded impossible. God kept it anyway, in His time. Waiting doesn’t mean He has forgotten you.",
