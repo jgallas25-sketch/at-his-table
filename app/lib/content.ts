@@ -1,3 +1,5 @@
+import { type Woman, women } from "./women";
+
 // All site copy that appears in lists lives here, so it can be edited in one place.
 // Scripture framing and pairings are pending pastor review.
 
@@ -23,26 +25,20 @@ export const seasons = [
   { slug: "fresh-start", title: "I Need a Fresh Start", line: "There is room to begin again.", img: SEASON_IMG + "hf_20261021_231137_616ebcc6-ffe5-4a4c-a604-e94f20ad5563.png" },
 ] as const;
 
+// Examples shown in "Your Story" on the homepage, drawn from the same women the story flow uses.
+const example = (who: string, w: Woman) => ({ who, name: w.name, why: w.why, ref: w.ref });
+
 export const examplePairs = [
-  {
-    who: "A young mom, running on empty",
-    name: "Jochebed",
-    why: "She trusted God with the child she couldn’t protect on her own.",
-    ref: "Exodus 2",
-  },
-  {
-    who: "An empty nester, wondering what’s next",
-    name: "Elizabeth",
-    why: "God surprised her with a new calling later in life.",
-    ref: "Luke 1",
-  },
-  {
-    who: "Starting over after divorce",
-    name: "The woman at the well",
-    why: "Jesus met her with truth and dignity, not shame.",
-    ref: "John 4",
-  },
+  example("A young mom, running on empty", women.mary),
+  example("Serving everyone at church and at home", women.dorcas),
+  example("Married and building something together", women.priscilla),
+  example("Settling into a new home", women.shunammite),
+  example("Raising grandchildren in the faith", women.lois),
+  example("Sensing a new calling", women.deborah),
 ];
+
+/** A few more names for the line under the examples. */
+export const moreWomen = ["Hannah", "Ruth", "Esther", "Phoebe", "Lydia", "Abigail", "Sarah", "Miriam"];
 
 // The daily rhythm, in order. It always begins with praise.
 export const rhythm = [

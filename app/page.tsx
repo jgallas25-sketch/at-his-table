@@ -3,7 +3,7 @@ import Link from "next/link";
 import HeroMedia from "./components/HeroMedia";
 import Icon from "./components/Icon";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
-import { examplePairs, plannerFeatures, rhythm, seasons } from "./lib/content";
+import { examplePairs, moreWomen, plannerFeatures, rhythm, seasons } from "./lib/content";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -395,6 +395,9 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <p className="display" style={{ fontStyle: "italic", fontSize: 20, lineHeight: 1.5, color: "var(--ink-soft)", textAlign: "center" }}>
+              You might also walk with {moreWomen.join(", ")} and many more.
+            </p>
           </div>
         </section>
 
