@@ -18,8 +18,8 @@ export default function AboutPage() {
           <div className="wrap split">
             <img
               src="/images/about/heather.jpg"
-              alt="Heather, smiling outdoors"
-              style={{ width: "100%", maxWidth: 440, aspectRatio: "510 / 586", objectFit: "cover", borderRadius: 12, justifySelf: "center" }}
+              alt="Heather, smiling"
+              style={{ width: "100%", maxWidth: 440, aspectRatio: "4 / 5", objectFit: "cover", borderRadius: 12, justifySelf: "center" }}
             />
             <div className="stack">
               <p className="eyebrow">About us</p>
@@ -64,11 +64,6 @@ export default function AboutPage() {
                 With love, Jim &amp; Heather
               </p>
             </div>
-            <img
-              src="/images/about/jim-and-heather.jpg"
-              alt="Jim and Heather smiling together"
-              style={{ width: "100%", aspectRatio: "4 / 3", objectFit: "cover", borderRadius: 12, marginTop: 12 }}
-            />
           </div>
         </section>
 
