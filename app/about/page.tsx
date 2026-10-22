@@ -6,7 +6,7 @@ import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "About Us – At His Table",
-  description: "Meet Jim and Heather, the real people behind At His Table, and what we hope for you.",
+  description: "Meet Jim and Heather, the people behind At His Table, and what we hope for you.",
 };
 
 export default function AboutPage() {
@@ -23,9 +23,9 @@ export default function AboutPage() {
             />
             <div className="stack">
               <p className="eyebrow">About us</p>
-              <h1 className="display h1">The real people at the table.</h1>
+              <h1 className="display h1">The people behind At His Table.</h1>
               <p className="lead">
-                Behind every page of At His Table is a real family who loves Jesus and knows how full a woman&rsquo;s
+                Behind every page of At His Table is a family who loves Jesus and knows how full a woman&rsquo;s
                 life can get. We&rsquo;d love for you to meet us.
               </p>
             </div>

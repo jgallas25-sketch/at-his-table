@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const navLinks = [
   { href: "/#vision", label: "The Vision" },
+  { href: "/#martha", label: "Martha’s Story" },
+  { href: "/#series", label: "The Series" },
   { href: "/#seasons", label: "Every Season" },
   { href: "/#story", label: "Your Story" },
-  { href: "/#martha", label: "Martha" },
-  { href: "/#series", label: "The Series" },
   { href: "/about", label: "About Us" },
 ];
 
