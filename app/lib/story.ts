@@ -308,44 +308,46 @@ export const seasonPresets: Record<string, Answers> = {
 const weights: Record<string, Record<string, number>> = {
   // life
   "Raising little ones (0–5)": { mary: 2 },
-  "School-age kids": { mary: 1 },
-  Teens: { hannah: 1 },
+  "School-age kids": { mary: 1, lois: 1 },
+  Teens: { hannah: 1, lois: 1 },
   "Adult children": { elizabeth: 1 },
   "Empty nest": { elizabeth: 2 },
-  Grandchildren: { anna: 1 },
+  Grandchildren: { anna: 1, lois: 2 },
   "Stepmom or blended family": { ruth: 1 },
   "Caring for an aging parent": { ruth: 3 },
-  "Just moved into a new home": { lydia: 2 },
-  "Working full time": { lydia: 1 },
+  "Just moved into a new home": { shunammite: 2, lydia: 1 },
+  "Working full time": { lydia: 1, deborah: 1 },
   "Working part time": { lydia: 1 },
-  "Running my own business": { lydia: 2 },
+  "Running my own business": { lydia: 2, priscilla: 1, deborah: 1 },
   "In school": { esther: 1 },
-  "Serving in ministry": { martha: 1 },
+  "Serving in ministry": { dorcas: 2, phoebe: 2, priscilla: 1, martha: 1 },
   Retired: { anna: 2 },
   // status
   Widowed: { naomi: 3 },
   Divorced: { well: 2, rahab: 1 },
   Separated: { leah: 2 },
-  Single: { maryBethany: 1, lydia: 1 },
+  Single: { maryBethany: 1, lydia: 1, phoebe: 1 },
   // together
   Distant: { leah: 2 },
-  Strained: { leah: 3 },
+  Strong: { priscilla: 2 },
+  Growing: { priscilla: 2 },
+  Strained: { leah: 3, abigail: 1 },
   Lonely: { leah: 2, hagar: 1 },
-  "He doesn’t share my faith": { leah: 2 },
+  "He doesn’t share my faith": { lois: 3, leah: 1 },
   "We’re working through hurt": { leah: 2 },
   [UNSAFE]: { hagar: 3 },
   // season
   "Hoping for marriage": { sarah: 1 },
   "Healing from a loss": { naomi: 2 },
   "Rebuilding after divorce": { well: 2, rahab: 1 },
-  Content: { lydia: 1 },
+  Content: { lydia: 1, shunammite: 1 },
   // children
   "Waiting or hoping for children": { sarah: 2, hannah: 2 },
   "Pregnancy or child loss": { hannah: 3 },
   "A child who has walked away from faith": { canaanite: 3 },
   "A child with special needs or health challenges": { canaanite: 2 },
   "A child who is struggling": { canaanite: 3 },
-  "Raising grandchildren": { ruth: 1 },
+  "Raising grandchildren": { lois: 3, ruth: 1 },
   // body
   "Constantly tired": { martha: 1 },
   "Chronic illness or pain": { reached: 2 },
@@ -357,17 +359,17 @@ const weights: Record<string, Record<string, number>> = {
   Overworked: { martha: 2 },
   "Starting a new job": { esther: 2 },
   "Starting something new": { esther: 1, lydia: 1 },
-  "Sensing a call but not sure what": { esther: 2 },
-  "Burned out from serving": { martha: 2 },
+  "Sensing a call but not sure what": { esther: 2, deborah: 1 },
+  "Burned out from serving": { martha: 2, dorcas: 1 },
   // heart (each pick)
   "Worry or anxiety": { martha: 2 },
   Grief: { naomi: 2 },
   Loneliness: { hagar: 2 },
   "Shame or regret": { well: 2 },
-  "Anger or bitterness": { naomi: 2 },
+  "Anger or bitterness": { naomi: 2, abigail: 1 },
   "Waiting on God": { sarah: 2 },
   Disappointment: { hannah: 2 },
-  "Fear about the future": { esther: 2 },
+  "Fear about the future": { esther: 2, deborah: 1 },
   Exhaustion: { martha: 2 },
   "Too busy, even with good things": { martha: 2 },
   Hope: { elizabeth: 2 },
@@ -383,7 +385,7 @@ const weights: Record<string, Record<string, number>> = {
   "Peace in the storm": { martha: 1 },
   Healing: { reached: 1 },
   "Freedom from something": { magdalene: 1 },
-  "Purpose and calling": { esther: 1 },
+  "Purpose and calling": { esther: 1, deborah: 1, phoebe: 1 },
   "Hearing His voice": { maryBethany: 1 },
   "Knowing His Word": { maryBethany: 1 },
   "Getting my joy back": { miriam: 1 },
@@ -403,8 +405,10 @@ export function matchWomen(a: Answers): Woman[] {
   for (const id of ["life", "status", "together", "season", "children", "body", "work", "heart", "walk", "longing"]) {
     for (const ans of list(a, id)) add(id, ans);
   }
+  // Her heaviest burden counts most. Hope, gratitude and joy aren't burdens, so her life circumstances lead instead.
   const heavy = heaviest(a);
-  if (heavy) for (const [k, w] of Object.entries(weights[heavy] ?? {})) score[k] = (score[k] ?? 0) + w * HEAVIEST_BONUS;
+  const bonus = ["Hope", "Gratitude", "Joy"].includes(heavy) ? 0 : HEAVIEST_BONUS;
+  if (heavy) for (const [k, w] of Object.entries(weights[heavy] ?? {})) score[k] = (score[k] ?? 0) + w * bonus;
   const ranked = Object.entries(score)
     .sort((x, y) => y[1] - x[1])
     .map(([k]) => women[k]);
