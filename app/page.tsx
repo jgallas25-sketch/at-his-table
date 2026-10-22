@@ -211,36 +211,6 @@ export default function Home() {
           </figure>
         </section>
 
-        {/* ── Season picker ────────────────────────── */}
-        <section id="where" className="section" style={{ textAlign: "center", background: "var(--linen)" }}>
-          <div className="wrap stack" style={{ alignItems: "center", gap: 14 }}>
-            <h2 className="display h2">Where are you today?</h2>
-            <p className="lead">Tap the one that feels most like your life right now. We&rsquo;ll start your story from there.</p>
-          </div>
-          <div className="wrap grid-auto season-grid" style={{ marginTop: 44 }}>
-            {seasons.map((s) => (
-              <Link key={s.slug} href={`/your-story?season=${s.slug}`} className="card season-card">
-                <span className="season-photo">
-                  <Image src={s.img} alt="" fill sizes="(max-width: 560px) 50vw, 290px" />
-                </span>
-                <span className="season-text">
-                  <span className="display" style={{ fontSize: 22 }}>
-                    {s.title}
-                  </span>
-                  <span style={{ fontSize: 15, color: "var(--muted)" }}>{s.line}</span>
-                </span>
-              </Link>
-            ))}
-          </div>
-          <p
-            className="display"
-            style={{ fontStyle: "italic", fontSize: "clamp(18px, 1.6vw, 21px)", lineHeight: 1.5, color: "var(--ink-soft)", maxWidth: 660, margin: "40px auto 0" }}
-          >
-            Sometimes life is full of good things &mdash; and that&rsquo;s when time with Him slips away first. Hard
-            seasons, new seasons, happy seasons: every one has a seat at His table.
-          </p>
-        </section>
-
         {/* ── How it works ─────────────────────────── */}
         <section id="story" className="section" style={{ background: "#fff", borderTop: "1px solid var(--line)" }}>
           <div className="wrap stack" style={{ gap: 48 }}>
@@ -293,6 +263,36 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </section>
+
+        {/* ── Season picker ────────────────────────── */}
+        <section id="where" className="section" style={{ textAlign: "center", background: "var(--linen)" }}>
+          <div className="wrap stack" style={{ alignItems: "center", gap: 14 }}>
+            <h2 className="display h2">Where are you today?</h2>
+            <p className="lead">Tap the one that feels most like your life right now. We&rsquo;ll start your story from there.</p>
+          </div>
+          <div className="wrap grid-auto season-grid" style={{ marginTop: 44 }}>
+            {seasons.map((s) => (
+              <Link key={s.slug} href={`/your-story?season=${s.slug}`} className="card season-card">
+                <span className="season-photo">
+                  <Image src={s.img} alt="" fill sizes="(max-width: 560px) 50vw, 290px" />
+                </span>
+                <span className="season-text">
+                  <span className="display" style={{ fontSize: 22 }}>
+                    {s.title}
+                  </span>
+                  <span style={{ fontSize: 15, color: "var(--muted)" }}>{s.line}</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+          <p
+            className="display"
+            style={{ fontStyle: "italic", fontSize: "clamp(18px, 1.6vw, 21px)", lineHeight: 1.5, color: "var(--ink-soft)", maxWidth: 660, margin: "40px auto 0" }}
+          >
+            Sometimes life is full of good things &mdash; and that&rsquo;s when time with Him slips away first. Hard
+            seasons, new seasons, happy seasons: every one has a seat at His table.
+          </p>
         </section>
 
         {/* ── Your Story ───────────────────────────── */}
