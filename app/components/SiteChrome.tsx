@@ -6,6 +6,7 @@ const navLinks = [
   { href: "/#story", label: "Your Story" },
   { href: "/#martha", label: "Martha" },
   { href: "/#series", label: "The Series" },
+  { href: "/about", label: "About Us" },
 ];
 
 export function SiteHeader() {
