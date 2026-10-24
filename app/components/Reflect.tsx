@@ -36,6 +36,7 @@ export default function Reflect({
   scripture: string;
   prayer: string;
 }) {
+  const [saveError, setSaveError] = useState("");
   const [reflection, setReflection] = useState("");
   const [gratitude, setGratitude] = useState("");
   const router = useRouter();
@@ -43,8 +44,11 @@ export default function Reflect({
 
   function save() {
     const date = new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
-    if (gratitude.trim()) addEntry({ tag: "Gratitude", date, text: gratitude.trim(), ref: "Today’s thanks" });
-    if (reflection.trim()) addEntry({ tag: "Reflection", date, text: reflection.trim(), ref: scripture });
+    if (!reflection.trim() && !gratitude.trim()) { setSaveError("Write a reflection or a word of gratitude before saving."); return; }
+    let stored = true;
+    if (gratitude.trim()) stored = addEntry({ tag: "Gratitude", date, text: gratitude.trim(), ref: "Today’s thanks" });
+    if (reflection.trim()) stored = addEntry({ tag: "Reflection", date, text: reflection.trim(), ref: scripture }) && stored;
+    if (!stored) { setSaveError("Your browser could not save this entry. Please copy your writing before leaving this page."); return; }
     // If what she wrote suggests she may be in danger, point her to a person first.
     const need = textNeed(`${reflection} ${gratitude}`);
     if (need) {
@@ -109,6 +113,7 @@ export default function Reflect({
         />
       </section>
 
+      {saveError && <p role="alert">{saveError}</p>}
       <button className="btn" style={{ width: "100%" }} onClick={save}>
         Save to my testimony journal
       </button>

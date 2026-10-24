@@ -16,23 +16,26 @@ export default function JournalList() {
   const raw = useSyncExternalStore(noSubscribe, readRaw, () => "");
   const saved = useMemo<JournalEntry[]>(() => {
     try {
-      return raw ? JSON.parse(raw) : [];
+      const value = raw ? JSON.parse(raw) : [];
+      return Array.isArray(value) ? value.filter(e => e && typeof e.text === "string" && typeof e.tag === "string" && typeof e.date === "string") : [];
     } catch {
       return [];
     }
   }, [raw]);
 
-  const entries = [...saved, ...sampleEntries];
+  const isSample = saved.length === 0;
+  const entries = isSample ? sampleEntries : saved;
   const prayers = entries.filter((e) => e.tag === "Prayer").length;
   const answered = entries.filter((e) => e.tag === "Answered").length;
 
   return (
     <>
+      {isSample && <div className="sample-banner"><strong>Example journal</strong><p>These entries illustrate how a journal can grow. They are not your prayers or experiences. Your own entries will appear here when you save them.</p></div>}
       <div style={{ display: "flex", gap: 8 }}>
         {[
           [String(prayers), "Prayers I’m carrying"],
           [String(answered), "Answered"],
-          [String(entries.length), "Entries so far"],
+          [String(entries.length), isSample ? "Example entries" : "Entries so far"],
         ].map(([n, l]) => (
           <div key={l} className="card" style={{ flex: 1, padding: 12, textAlign: "center", borderRadius: 10 }}>
             <p className="display" style={{ fontSize: 26 }}>

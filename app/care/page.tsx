@@ -63,7 +63,7 @@ export default function CarePage() {
             </h2>
             <ul style={{ margin: 0, paddingLeft: 22, listStyle: "disc", fontSize: 18, lineHeight: 1.7, color: "var(--ink-soft)" }}>
               <li>
-                Right now, your story and journal are saved only on this device, in this browser. They aren&rsquo;t sent to
+                Right now, your story, daily check-ins and journal are saved only on this device, in this browser. They aren&rsquo;t sent to
                 us, and we can&rsquo;t see them.
               </li>
               <li>We will never sell or share your story.</li>

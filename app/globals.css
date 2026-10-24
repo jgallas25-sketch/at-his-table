@@ -187,3 +187,39 @@ img { max-width: 100%; display: block; }
   min-height: 44px; border: 0; background: transparent; color: var(--plum);
   font: 15px var(--font-body); cursor: pointer; padding: 0;
 }
+
+/* Reading and reflection adapt to the screen without changing the brand. */
+.phone { width: min(760px, calc(100% - 40px)); min-height: min(844px, calc(100vh - 48px)); }
+.phone-body { padding: clamp(22px, 4vw, 40px); gap: 22px; }
+.intake-panel { width: min(660px, calc(100% - 40px)); }
+.need-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.need-grid .opt { font-size: 16px; }
+.option-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.sample-banner { padding: 16px 20px; border-radius: 10px; background: var(--blush); font-size: 15px; line-height: 1.5; }
+.sample-banner p { margin: 6px 0 0; }
+.action-row { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+summary { cursor: pointer; min-height: 44px; padding: 10px 0; font-weight: 600; }
+.series summary { color: var(--cream); }
+.more-seasons summary { color: var(--plum); }
+.opt { max-width: 100%; }
+textarea.opt { cursor: text; resize: vertical; }
+select.opt { width: 100%; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+#check-in, #sunday { scroll-margin-top: 24px; }
+@media (max-width: 760px) {
+  section[id] { scroll-margin-top: 125px; }
+  .hero-copy { padding-top: 36px; }
+  .phone, .intake-panel { width: calc(100% - 24px); }
+  .phone-body { padding: 24px 20px; }
+  .chip { white-space: normal; }
+}
+@media (max-width: 440px) {
+  .phone, .intake-panel { width: 100%; min-height: 100vh; }
+  .need-grid { grid-template-columns: 1fr; }
+  .grid-auto:not(.season-grid) { grid-template-columns: 1fr !important; }
+  .hero-photo { min-height: 290px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

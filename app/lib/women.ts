@@ -128,7 +128,7 @@ export const women: Record<string, Woman> = {
     praise: "You are mighty, and You remember. You remembered Elizabeth, and You remember me.",
     title: "A new chapter",
     devotion:
-      "Elizabeth had waited a long time and stopped expecting anything new. Then God moved, in a quiet house, with no crowd watching. If you can’t see what’s next, you’re not forgotten. He still writes new chapters.",
+      "Elizabeth had lived for many years without a child. Then God moved, in a quiet house, with no crowd watching. If you can’t see what’s next, you’re not forgotten. He still writes new chapters.",
     prompt: "Where do you need to hear that it isn’t too late?",
     prayer: "Lord, I don’t know the next step. Help me trust that You do. Amen.",
   },

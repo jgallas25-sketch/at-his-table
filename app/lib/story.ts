@@ -636,7 +636,8 @@ export function saveProfile(p: Profile) {
   try {
     localStorage.setItem(PROFILE_KEY, JSON.stringify(p));
     localStorage.removeItem(PROGRESS_KEY);
+    return true;
   } catch {
-    // Storage unavailable (private browsing): the flow still works for this visit.
+    return false;
   }
 }

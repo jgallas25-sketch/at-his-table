@@ -1,3 +1,4 @@
+import WeekReflection from "../components/WeekReflection";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AppTabBar } from "../components/SiteChrome";
@@ -7,7 +8,7 @@ export const metadata: Metadata = { title: "My Planner – At His Table" };
 /* eslint-disable @next/next/no-img-element */
 
 const days = [
-  { dow: "Mon", date: "12", faith: "Luke 1:45 · Blessed is she who believed", plan: "Work 9–5 · Grocery pickup", today: true },
+  { dow: "Mon", date: "12", faith: "Luke 1:45 · Blessed is she who believed", plan: "Work 9–5 · Grocery pickup", today: false },
   { dow: "Tue", date: "13", faith: "Luke 1:13 · Your prayer is heard", plan: "Call Mom · Dentist 3:30" },
   { dow: "Wed", date: "14", faith: "Luke 1:24–25 · He looked on me", plan: "Small group 7:00" },
   { dow: "Thu", date: "15", faith: "Luke 1:41 · Joy that leaps", plan: "Lunch with Karen" },
@@ -20,9 +21,11 @@ export default function PlannerPage() {
     <div className="app-shell">
       <div className="phone">
         <main className="phone-body" style={{ gap: 14 }}>
+          <Link href="/" className="small">← Back to At His Table</Link>
+          <div className="sample-banner"><strong>Sample week</strong><p>The Scripture schedule and appointments below are examples. Your check-ins and Sunday reflection are kept separately on this device.</p></div>
           <div>
             <p className="small" style={{ fontSize: 13 }}>
-              Week 1 · Oct 12–18
+              Example week · Oct 12–18
             </p>
             <h1 className="display" style={{ fontSize: 28 }}>
               Your week, with God.
@@ -70,11 +73,12 @@ export default function PlannerPage() {
           <Link href="/#series" className="card" style={{ display: "flex", gap: 12, alignItems: "center", padding: 12, textDecoration: "none", color: "var(--ink)" }}>
             <img src="/images/hero.jpg" alt="" style={{ width: 64, height: 44, objectFit: "cover", borderRadius: 6 }} />
             <span style={{ fontSize: 14, lineHeight: 1.4 }}>
-              <strong style={{ color: "var(--plum)" }}>Saturday: watch, then reflect</strong>
+              <strong style={{ color: "var(--plum)" }}>Saturday: meet Emily & Heather</strong>
               <br />
-              Episode One · &ldquo;The Better Seat&rdquo;
+              Episode One is coming soon.
             </span>
           </Link>
+          <WeekReflection />
         </main>
         <AppTabBar active="/planner" />
       </div>
