@@ -35,7 +35,7 @@ export default function Home() {
               <Link href="/today?sample=1" className="link-arrow">Try a Sample Day</Link>
             </div>
             <p className="small">First time? <Link href="/welcome">Let Heather show you →</Link></p>
-            <p className="small">Free preview. No account or payment needed.</p>
+            <p className="small">7 days free. Cancel anytime.</p>
           </div>
           <div className="hero-photo">
             <HeroMedia />
@@ -313,7 +313,7 @@ export default function Home() {
                   See a sample week
                 </Link>
               </div>
-              <p className="small">Free preview. No account or payment needed.</p>
+              <p className="small">7 days free. Cancel anytime.</p>
             </div>
             <div className="card stack" style={{ padding: 28, gap: 16 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
@@ -368,7 +368,7 @@ export default function Home() {
           <Link href="/your-story" className="btn">
             Take Your Seat <span aria-hidden="true">→</span>
           </Link>
-          <p className="small">Free preview. No account or payment needed.</p>
+          <p className="small">7 days free. Cancel anytime.</p>
         </section>
       </main>
       <SiteFooter />
