@@ -22,8 +22,8 @@ export function SiteHeader() {
         ))}
       </nav>
       <div className="header-cta">
-        <Link href="/today" className="sign-in" style={{ fontSize: 15, textDecoration: "none" }}>
-          Explore the Demo
+        <Link href="/overview" className="sign-in" style={{ fontSize: 15, textDecoration: "none" }}>
+          Overview
         </Link>
         <Link href="/your-story" className="btn">
           Take Your Seat
@@ -65,13 +65,13 @@ export function SiteFooter() {
 }
 
 const tabs = [
+  { href: "/overview", label: "Overview" },
   { href: "/today", label: "Today" },
   { href: "/planner", label: "Planner" },
   { href: "/journal", label: "Journal" },
-  { href: "/#series", label: "Series" },
 ];
 
-export function AppTabBar({ active }: { active: "/today" | "/planner" | "/journal" }) {
+export function AppTabBar({ active }: { active: "/overview" | "/today" | "/planner" | "/journal" }) {
   return (
     <nav className="tabbar" aria-label="App">
       {tabs.map((t) => (

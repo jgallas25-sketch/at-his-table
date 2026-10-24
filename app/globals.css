@@ -223,3 +223,34 @@ button:disabled { opacity: .55; cursor: not-allowed; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* A small map keeps the daily visit in context. */
+.journey-guide { background: var(--linen); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.journey-heading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 13px; font-weight: 600; color: var(--plum); }
+.journey-heading a { min-height: 32px; display: inline-flex; align-items: center; }
+.journey-guide ol { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 0; margin: 10px 0; }
+.journey-guide li { min-width: 0; }
+.journey-guide nav a { display: flex; align-items: flex-start; gap: 7px; border-radius: 8px; padding: 10px 7px; min-height: 64px; color: var(--ink-soft); text-decoration: none; font-size: 13px; line-height: 1.35; }
+.journey-guide nav a[aria-current="step"] { background: var(--plum); color: white; }
+.journey-number { font-size: 12px; opacity: .8; }
+.journey-guide small { display: block; font-size: 11px; margin-top: 4px; }
+.journey-guide p { margin: 8px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
+.intake-guide { padding: 20px 22px 0; display: grid; gap: 10px; }
+.overview-path { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.overview-path > div { padding: 24px; }
+.overview-path > div + div { border-top: 1px solid var(--line); }
+.overview-path h2 { font-size: 26px; margin: 8px 0; }
+.overview-path p { color: var(--ink-soft); line-height: 1.6; margin: 0 0 14px; }
+.overview-today { background: var(--blush); }
+.overview-extras { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.overview-extras a { padding: 20px; display: grid; gap: 8px; text-decoration: none; }
+.overview-extras span { color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
+.finish-link { display: block; text-align: center; padding: 14px; border: 1px solid var(--line-strong); border-radius: 8px; }
+#reflection { scroll-margin-top: 24px; }
+.journey-guide a:focus-visible, .overview-extras a:focus-visible, .finish-link:focus-visible { outline: 3px solid var(--terracotta); outline-offset: 3px; }
+@media (max-width: 440px) {
+  .journey-guide { padding: 12px; }
+  .journey-guide nav a { flex-direction: column; padding: 8px 5px; font-size: 12px; }
+  .overview-extras { grid-template-columns: 1fr; }
+  .overview-path > div { padding: 20px; }
+}
