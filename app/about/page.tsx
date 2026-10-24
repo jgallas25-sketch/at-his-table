@@ -17,7 +17,7 @@ export default function AboutPage() {
         <section className="section" style={{ background: "var(--linen)" }}>
           <div className="wrap split">
             <img
-              src="/images/about/heather.jpg"
+              src="/images/about/heather-portrait.jpg"
               alt="Heather, smiling"
               style={{ width: "100%", maxWidth: 440, aspectRatio: "4 / 5", objectFit: "cover", borderRadius: 12, justifySelf: "center" }}
             />
