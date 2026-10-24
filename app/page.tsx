@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import WelcomeIntro from "./components/WelcomeIntro";
 import HeroMedia from "./components/HeroMedia";
 import Icon from "./components/Icon";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
@@ -31,6 +32,7 @@ export default function Home() {
               </Link>
               <Link href="/today?sample=1" className="link-arrow">Try a Sample Day</Link>
             </div>
+            <p className="small">First time? <Link href="/welcome">Let Heather show you →</Link></p>
             <p className="small">Free preview. No account or payment needed.</p>
           </div>
           <div className="hero-photo">
@@ -38,32 +40,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── How it works ─────────────────────────── */}
-        <section id="story" className="section" style={{ background: "#fff", borderTop: "1px solid var(--line)" }}>
-          <div className="wrap stack" style={{ gap: 48 }}>
-            <div className="stack" style={{ textAlign: "center", alignItems: "center", gap: 14 }}>
-              <p className="eyebrow">How it works</p>
-              <h2 className="display h2">It starts where you are. It leads you to Him.</h2>
-            </div>
-            <ol className="grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 36, listStyle: "none", padding: 0, margin: 0 }}>
-              {[
-                { t: "Tell us your story", l: "Start with your season, today’s need, and the time you have. Share more whenever you’re ready." },
-                { t: "Meet her in Scripture", l: "Explore a biblical story with themes relevant to your life." },
-                { t: "Sit with Him daily", l: "Begin with praise, then Scripture, reflection, prayer, and gratitude. Try a sample today." },
-              ].map((step, i) => (
-                <li key={step.t} className="stack" style={{ gap: 12 }}>
-                  <span className="display" style={{ fontSize: 48, lineHeight: 1, color: "var(--terracotta)" }}>
-                    {i + 1}
-                  </span>
-                  <p className="display" style={{ fontSize: 26 }}>
-                    {step.t}
-                  </p>
-                  <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: "var(--ink-soft)" }}>{step.l}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <WelcomeIntro />
 
         {/* ── Daily rhythm ─────────────────────────── */}
         <section className="section" style={{ textAlign: "center", background: "#fff", paddingTop: 0 }}>

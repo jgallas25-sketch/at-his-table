@@ -8,6 +8,7 @@ export default async function OverviewPage({ searchParams }: { searchParams: Pro
     <Link href="/" className="small">← At His Table home</Link>
     {finished === "1" && <div className="sample-banner" role="status"><strong>Carry His peace into your day.</strong><p>{saved === "1" ? "Your words are saved in your journal. " : ""}You can finish here. Your seat will be here when you return.</p></div>}
     <header className="stack" style={{ gap: 10 }}><p className="eyebrow">The big picture</p><h1 className="display h2">Your time at the table.</h1><p className="lead">A little Scripture. A moment of prayer. Space to hear from God.</p></header>
+    <p className="small">First time? <Link href="/welcome">How this works — let Heather show you →</Link></p>
     <section className="overview-path" aria-label="How your visit works">
       <div><span className="label">01 · To begin</span><h2 className="display">Share your story</h2><p>Three questions help us choose a starting devotional. You can update your story whenever life changes.</p><Link href="/your-story">Answer the three questions →</Link></div>
       <div className="overview-today"><span className="label">02 · Each visit</span><h2 className="display">Sit with Jesus</h2><p>Choose what’s on your heart, then spend time in Scripture and prayer.</p><Link href="/today" className="btn">Open today’s devotional →</Link></div>

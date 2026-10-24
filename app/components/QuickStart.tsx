@@ -35,6 +35,7 @@ export default function QuickStart({ seasonSlug }: { seasonSlug?: string }) {
     <p className="eyebrow">Take your seat</p>
     <h1 className="display h2">Let’s begin where you are.</h1>
     <p className="lead">Answer three questions, receive a devotional, and reflect if you’d like. You can share more of your story later.</p>
+    <Link href="/welcome" className="small">How this works — a one-minute introduction</Link>
     <form onSubmit={begin} className="stack" style={{ gap: 24 }}>
       <label className="stack" style={{ gap: 8 }}><span className="display" style={{ fontSize: 23 }}>1. What season are you in?</span>
         <select className="opt" value={season} onChange={e => setSeason(e.target.value)}>
