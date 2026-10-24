@@ -10,6 +10,7 @@ export default function JournalPage() {
     <div className="app-shell">
       <div className="phone">
         <main className="phone-body">
+          <Link href="/" className="small">← Back to At His Table</Link>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 12 }}>
             <div>
               <p className="small" style={{ fontSize: 13 }}>
@@ -27,9 +28,8 @@ export default function JournalPage() {
           <JournalList />
 
           <p style={{ margin: 0, background: "var(--plum-dark)", color: "var(--cream)", borderRadius: 12, padding: "14px 16px", fontSize: 14, lineHeight: 1.5 }}>
-            <span style={{ color: "var(--clay)", fontWeight: 600 }}>Look back:</span> On Monday you wrote, &ldquo;I
-            don&rsquo;t know the next step.&rdquo; By Thursday you wrote that you felt peace about it. That&rsquo;s a
-            testimony.
+            <span style={{ color: "var(--clay)", fontWeight: 600 }}>A moment to look back:</span>{" "}
+            What have you brought to God? What has changed? Record an answer, a small step, or something you are still waiting on.
           </p>
         </main>
         <AppTabBar active="/journal" />

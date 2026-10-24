@@ -29,6 +29,7 @@ const EXCLUSIVE = ["Prefer not to say", "No children"];
 
 export default function Intake({ seasonSlug }: { seasonSlug?: string }) {
   const router = useRouter();
+  const [saveError, setSaveError] = useState("");
   const preset = useMemo(() => (seasonSlug ? seasonPresets[seasonSlug] ?? {} : {}), [seasonSlug]);
   const [answers, setAnswers] = useState<Answers>(preset);
   const [screen, setScreen] = useState<Screen>("welcome");
@@ -108,12 +109,13 @@ export default function Intake({ seasonSlug }: { seasonSlug?: string }) {
   const name = typeof answers.name === "string" && answers.name.trim() ? answers.name.trim() : "";
 
   function takeSeat() {
-    saveProfile({
+    const stored = saveProfile({
       answers: safeToStore(answers),
       woman: matches[0].key,
       others: matches.slice(1).map((w) => w.key),
       savedAt: new Date().toISOString(),
     });
+    if (!stored) { setSaveError("Your browser could not save your story. Please allow browser storage or try a sample day."); return; }
     router.push("/today");
   }
 
@@ -121,7 +123,7 @@ export default function Intake({ seasonSlug }: { seasonSlug?: string }) {
 
   return (
     <div className="app-shell">
-      <div className="phone">
+      <div className="phone intake-panel">
         {screen === "welcome" && (
           <div className="phone-body" style={{ justifyContent: "flex-end", gap: 18, padding: "32px 28px 40px", background: "var(--linen)" }}>
             <Link href="/" style={{ marginBottom: "auto" }} aria-label="Back to At His Table home">
@@ -233,7 +235,7 @@ export default function Intake({ seasonSlug }: { seasonSlug?: string }) {
         {screen === "woman" && matches[0] && (
           <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
             <div className="stack" style={{ background: "var(--plum-dark)", color: "var(--cream)", padding: "44px 28px 32px", gap: 14 }}>
-              <p style={{ margin: 0, fontSize: 16, color: "#e6dad2" }}>There&rsquo;s a woman in Scripture who knows this road.</p>
+              <p style={{ margin: 0, fontSize: 16, color: "#e6dad2" }}>A biblical story to encourage you in this season.</p>
               <h1 className="display" style={{ fontSize: 40, lineHeight: 1.05, color: "var(--cream)" }}>
                 {matches[0].name}
               </h1>
@@ -271,6 +273,7 @@ export default function Intake({ seasonSlug }: { seasonSlug?: string }) {
                 <strong style={{ color: "var(--plum)" }}>{k}:</strong> {v}
               </p>
             ))}
+            {saveError && <p role="alert">{saveError} <Link href="/today?sample=1">Try a sample</Link></p>}
             <button className="btn" style={{ width: "100%", marginTop: "auto" }} onClick={takeSeat}>
               Take Your Seat <span aria-hidden="true">→</span>
             </button>

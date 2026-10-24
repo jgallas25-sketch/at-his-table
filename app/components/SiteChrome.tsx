@@ -1,11 +1,9 @@
 import Link from "next/link";
 
 const navLinks = [
-  { href: "/#vision", label: "The Vision" },
-  { href: "/#martha", label: "Martha’s Story" },
-  { href: "/#series", label: "The Series" },
-  { href: "/#seasons", label: "Every Season" },
-  { href: "/#story", label: "Your Story" },
+  { href: "/#story", label: "How It Works" },
+  { href: "/#seasons", label: "Your Season" },
+  { href: "/#series", label: "Meet Emily & Heather" },
   { href: "/about", label: "About Us" },
 ];
 
@@ -25,7 +23,7 @@ export function SiteHeader() {
       </nav>
       <div className="header-cta">
         <Link href="/today" className="sign-in" style={{ fontSize: 15, textDecoration: "none" }}>
-          Sign In
+          Explore the Demo
         </Link>
         <Link href="/your-story" className="btn">
           Take Your Seat
@@ -58,7 +56,7 @@ export function SiteFooter() {
         ))}
       </nav>
       <div style={{ display: "flex", gap: 20, fontSize: 13 }}>
-        <a href="#">Terms</a>
+        <Link href="/preview">About this Preview</Link>
         <Link href="/care">Care &amp; Privacy</Link>
         <a href="mailto:jgallas25@gmail.com">Contact</a>
       </div>

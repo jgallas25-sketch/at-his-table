@@ -7,7 +7,8 @@ export const JOURNAL_KEY = "aht-journal";
 export function loadEntries(): JournalEntry[] {
   try {
     const raw = localStorage.getItem(JOURNAL_KEY);
-    return raw ? (JSON.parse(raw) as JournalEntry[]) : [];
+    const value = raw ? JSON.parse(raw) : [];
+    return Array.isArray(value) ? value.filter(e => e && typeof e.text === "string" && typeof e.tag === "string" && typeof e.date === "string") : [];
   } catch {
     return [];
   }
@@ -16,8 +17,9 @@ export function loadEntries(): JournalEntry[] {
 export function addEntry(entry: JournalEntry) {
   try {
     localStorage.setItem(JOURNAL_KEY, JSON.stringify([entry, ...loadEntries()]));
+    return true;
   } catch {
-    // Storage unavailable (private browsing): nothing is saved.
+    return false;
   }
 }
 
