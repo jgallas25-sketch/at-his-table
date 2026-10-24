@@ -47,7 +47,9 @@ export default function AboutPage() {
                 and then leads you to Him, one day at a time.
               </p>
               <p style={{ margin: 0 }}>
-                Jim has spent many years in ministry, preaching and teaching the Word. Heather is the heart behind At His
+                Jim and Heather have served in multiple church plants and other ministries including children&rsquo;s
+                ministry, adult Bible studies, and whatever else the Lord calls them to do in and around the Washington
+                DC area. Heather is the heart behind At His
                 Table, and the Heather you&rsquo;ll meet in our story series is inspired by her.
               </p>
               <p style={{ margin: 0 }}>
