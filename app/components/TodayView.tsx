@@ -22,6 +22,8 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
   const [need, setNeed] = useState<NeedId | "">("");
   const [notice, setNotice] = useState("");
   const [ready, setReady] = useState(false);
+  // Opened when she arrives via a "Start today’s check-in" link. Content renders only after mount, so no hydration mismatch.
+  const [checkOpen, setCheckOpen] = useState(() => typeof window !== "undefined" && window.location.hash === "#check-in");
 
   useEffect(() => {
     setProfile(sample ? null : loadProfile());
@@ -40,12 +42,16 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
 
   const weeklyWoman = women[profile?.woman ?? ""] ?? women.elizabeth;
   const dailyChoice = dailyNeeds.find(n => n.id === need);
-  const w = dailyChoice ? women[dailyChoice.woman] : weeklyWoman;
+  // Her matched woman of Scripture stays with her. Without a story yet, today's choice sets the devotional;
+  // with a story, today's choice adds a verse alongside it.
+  const dailyWoman = dailyChoice ? women[dailyChoice.woman] : undefined;
+  const w = profile ? weeklyWoman : dailyWoman ?? weeklyWoman;
+  const wordForToday = profile && dailyWoman && dailyWoman !== weeklyWoman ? dailyWoman : undefined;
 
   function checkIn(value: NeedId | "") {
     setNeed(value);
     const stored = sample || (value ? saveCheckIn(value) : clearTodayCheckIn());
-    setNotice(sample ? "Sample updated. Your saved check-ins have not changed." : stored ? "Today’s focus updated. Your season stays the same." : "Updated for this visit only. Your browser could not save the check-in.");
+    setNotice(sample ? "Sample updated. Your saved check-ins have not changed." : stored ? "Saved for today. Your season stays the same." : "Updated for this visit only. Your browser could not save the check-in.");
   }
   const a = profile?.answers ?? {};
   const name = typeof a.name === "string" && a.name.trim() ? a.name.trim() : "";
@@ -76,16 +82,6 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
             {weight && <span className="chip">{weight}</span>}
           </div>
 
-          <section id="check-in" className="card stack" style={{ padding: 20, gap: 12 }}>
-            <h2 className="display" style={{ fontSize: 25 }}>What’s on your heart today?</h2>
-            <p className="small">Choose a focus for today’s Scripture, reflection, and prayer.</p>
-            <div className="need-grid">{dailyNeeds.map(n => <button key={n.id} className="opt" aria-pressed={need === n.id} onClick={() => checkIn(n.id)}>{n.label}</button>)}</div>
-            {need && <button className="ghost" style={{ alignSelf: "flex-start" }} onClick={() => checkIn("")}>Return to my season’s focus</button>}
-            <p className="small" role="status">{notice || "You can skip this and begin below."}</p>
-            {profile && <p className="small">Your season’s biblical starting point: {weeklyWoman.name}. <Link href="/planner">See this week’s check-ins</Link></p>}
-          </section>
-          {profile && <Link href="/your-story?full=1" className="small">Share more of my story</Link>}
-
           <div style={{ display: "flex", gap: 12, alignItems: "center", background: "var(--plum-dark)", color: "var(--cream)", borderRadius: 12, padding: "14px 16px" }}>
             <span
               className="display"
@@ -115,6 +111,14 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
             <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "#e6dad2", fontStyle: "italic" }}>Lord, {w.praise}</p>
           </section>
 
+          {/* Daily check-in: optional and compact, so her time still begins with praise. */}
+          <details id="check-in" className="card stack check-in" style={{ padding: "16px 20px", gap: 12 }} open={checkOpen} onToggle={e => setCheckOpen(e.currentTarget.open)}>
+            <summary>What&rsquo;s on your heart today?<small>{dailyChoice ? `Today: ${dailyChoice.label}` : "Optional — tap to choose"}</small></summary>
+            <div className="need-grid" style={{ marginTop: 12 }}>{dailyNeeds.map(n => <button key={n.id} className="opt" aria-pressed={need === n.id} onClick={() => checkIn(n.id)}>{n.label}</button>)}</div>
+            {need && <button className="ghost" style={{ alignSelf: "flex-start" }} onClick={() => checkIn("")}>Clear today&rsquo;s choice</button>}
+            <p className="small" role="status">{notice || (profile ? `You’re walking with ${weeklyWoman.name}. Today’s choice adds a word for your heart.` : "Choose one, or simply begin below.")}</p>
+            {profile && <Link href="/planner" className="small">See this week&rsquo;s check-ins</Link>}
+          </details>
           <figure className="card stack" style={{ margin: 0, padding: 18, gap: 8 }}>
             <p className="label">2 · Scripture</p>
             <blockquote className="display" style={{ margin: 0, fontSize: 19, lineHeight: 1.4 }}>
@@ -124,6 +128,14 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
               {w.verse.ref} (NKJV)
             </figcaption>
           </figure>
+
+          {wordForToday && (
+            <figure className="card stack" style={{ margin: 0, padding: 18, gap: 8, background: "var(--linen)" }}>
+              <p className="label">A word for today · {dailyChoice?.label}</p>
+              <blockquote className="display" style={{ margin: 0, fontSize: 18, lineHeight: 1.4 }}>&ldquo;{wordForToday.verse.text}&rdquo;</blockquote>
+              <figcaption className="small" style={{ fontSize: 13 }}>{wordForToday.verse.ref} (NKJV) · from the story of {wordForToday.name}</figcaption>
+            </figure>
+          )}
 
           <section className="stack" style={{ gap: 8 }}>
             <p className="label">Today&rsquo;s devotion</p>
@@ -151,6 +163,7 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
             </section>
           )}
 
+          {profile && <Link href="/your-story" className="small" style={{ alignSelf: "center" }}>Update my story</Link>}
           <Link href="/care" className="small" style={{ alignSelf: "center", fontSize: 13 }}>
             Care &amp; privacy
           </Link>

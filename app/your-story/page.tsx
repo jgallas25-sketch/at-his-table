@@ -10,9 +10,10 @@ export const metadata: Metadata = {
 export default async function YourStoryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ season?: string | string[]; full?: string }>;
+  searchParams: Promise<{ season?: string | string[]; quick?: string }>;
 }) {
-  const { season, full } = await searchParams;
+  const { season, quick } = await searchParams;
   const slug = typeof season === "string" ? season : undefined;
-  return full === "1" ? <Intake seasonSlug={slug} /> : <QuickStart seasonSlug={slug} />;
+  // Her full story is the main path; the three-question start is the quick option.
+  return quick === "1" ? <QuickStart seasonSlug={slug} /> : <Intake seasonSlug={slug} />;
 }

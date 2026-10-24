@@ -1,9 +1,11 @@
 import Link from "next/link";
 
 const navLinks = [
-  { href: "/#story", label: "How It Works" },
-  { href: "/#seasons", label: "Your Season" },
-  { href: "/#series", label: "Meet Emily & Heather" },
+  { href: "/#vision", label: "The Vision" },
+  { href: "/#martha", label: "Martha’s Story" },
+  { href: "/#series", label: "The Series" },
+  { href: "/#seasons", label: "Every Season" },
+  { href: "/#women", label: "Your Story" },
   { href: "/about", label: "About Us" },
 ];
 
