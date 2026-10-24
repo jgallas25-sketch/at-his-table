@@ -10,7 +10,7 @@ export default async function OverviewPage({ searchParams }: { searchParams: Pro
     <header className="stack" style={{ gap: 10 }}><p className="eyebrow">The big picture</p><h1 className="display h2">Your time at the table.</h1><p className="lead">A little Scripture. A moment of prayer. Space to hear from God.</p></header>
     <p className="small">First time? <Link href="/welcome">How this works — let Heather show you →</Link></p>
     <section className="overview-path" aria-label="How your visit works">
-      <div><span className="label">01 · To begin</span><h2 className="display">Share your story</h2><p>Three questions help us choose a starting devotional. You can update your story whenever life changes.</p><Link href="/your-story">Answer the three questions →</Link></div>
+      <div><span className="label">01 · To begin</span><h2 className="display">Share your story</h2><p>Tell us who you are and where you are with God, and meet a woman of Scripture who has walked your road. You can update your story whenever life changes.</p><Link href="/your-story">Share your story →</Link></div>
       <div className="overview-today"><span className="label">02 · Each visit</span><h2 className="display">Sit with Jesus</h2><p>Choose what’s on your heart, then spend time in Scripture and prayer.</p><Link href="/today" className="btn">Open today’s devotional →</Link></div>
       <div><span className="label">03 · If you’d like</span><h2 className="display">Keep a thought</h2><p>Write a reflection or a word of gratitude at the end of your devotional. Or simply finish for today.</p><Link href="/today#reflection">Go to reflection →</Link></div>
     </section>

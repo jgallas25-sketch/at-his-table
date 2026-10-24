@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import JourneyGuide from "./JourneyGuide";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { addEntry } from "../lib/journal";
@@ -33,7 +32,6 @@ export default function Reflect({
   prompt,
   scripture,
   prayer,
-  sample = false,
 }: {
   prompt: string;
   scripture: string;
@@ -82,7 +80,6 @@ export default function Reflect({
 
   return (
     <section id="reflection" className="stack" style={{ gap: 22 }}>
-      <JourneyGuide place="reflection" sample={sample} />
       <section className="stack" style={{ gap: 8 }}>
         <StepLabel n={3} htmlFor="reflect">
           Reflection

@@ -125,7 +125,7 @@ export default function Intake({ seasonSlug }: { seasonSlug?: string }) {
   return (
     <div className="app-shell">
       <div className="phone intake-panel">
-        <div className="intake-guide"><JourneyGuide place="story" /><Link href="/your-story" className="small">Prefer the three-question start?</Link></div>
+        <div className="intake-guide"><JourneyGuide place="story" /><Link href="/your-story?quick=1" className="small">Short on time? Start with three quick questions</Link></div>
         {screen === "welcome" && (
           <div className="phone-body" style={{ justifyContent: "flex-end", gap: 18, padding: "32px 28px 40px", background: "var(--linen)" }}>
             <Link href="/" style={{ marginBottom: "auto" }} aria-label="Back to At His Table home">
@@ -237,7 +237,7 @@ export default function Intake({ seasonSlug }: { seasonSlug?: string }) {
         {screen === "woman" && matches[0] && (
           <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
             <div className="stack" style={{ background: "var(--plum-dark)", color: "var(--cream)", padding: "44px 28px 32px", gap: 14 }}>
-              <p style={{ margin: 0, fontSize: 16, color: "#e6dad2" }}>A biblical story to encourage you in this season.</p>
+              <p style={{ margin: 0, fontSize: 16, color: "#e6dad2" }}>There&rsquo;s a woman in Scripture who knows this road.</p>
               <h1 className="display" style={{ fontSize: 40, lineHeight: 1.05, color: "var(--cream)" }}>
                 {matches[0].name}
               </h1>

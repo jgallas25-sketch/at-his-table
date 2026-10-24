@@ -2,7 +2,7 @@ import Link from "next/link";
 
 type Place = "story" | "today" | "reflection" | "journal" | "week";
 const purpose: Record<Place, string> = {
-  story: "A little about your season helps us choose a starting devotional. Next: time in Scripture and prayer.",
+  story: "Your story helps us set a table just for you. Next: time in Scripture and prayer.",
   today: "You’re here for Scripture and prayer. Reflect below if you’d like, or simply finish for today.",
   reflection: "Keep a thought or prayer from today. Writing is always optional.",
   journal: "A place to revisit your words and prayers. This is not another step to complete.",

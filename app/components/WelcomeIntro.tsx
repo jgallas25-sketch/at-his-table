@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const steps = [
-  { title: "Tell us a little.", timing: "Your first visit", text: "Three questions: your season, what’s on your heart, and the time you have. We’ll choose a starting devotional.", question: "“Where do I start?”", answer: "“Begin right where you are. There’s a seat for you.”" },
+  { title: "Tell us a little.", timing: "Your first visit", text: "Share your season, what you’re carrying, and where you are with God. We’ll introduce you to a woman of Scripture who has walked your road. Short on time? Three quick questions will get you started.", question: "“Where do I start?”", answer: "“Begin right where you are. There’s a seat for you.”" },
   { title: "Sit with Jesus.", timing: "Each day", text: "Begin with praise, read His Word, and use the prayer to help put your heart into words. Tomorrow, come straight back to Today.", question: "“What if tomorrow feels different?”", answer: "“Choose what’s on your heart that day, or simply begin.”" },
   { title: "Carry a thought with you.", timing: "Writing is optional", text: "Save a reflection or a word of thanks—or choose ‘Finish for today.’ Your journal and weekly review are there whenever they help.", question: "“Do I have to write something?”", answer: "“Only if you’d like. Some days, simply being here is enough.”" },
 ];
