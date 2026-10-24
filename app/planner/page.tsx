@@ -1,3 +1,4 @@
+import JourneyGuide from "../components/JourneyGuide";
 import WeekReflection from "../components/WeekReflection";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -21,7 +22,7 @@ export default function PlannerPage() {
     <div className="app-shell">
       <div className="phone">
         <main className="phone-body" style={{ gap: 14 }}>
-          <Link href="/" className="small">← Back to At His Table</Link>
+          <JourneyGuide place="week" />
           <div className="sample-banner"><strong>Sample week</strong><p>The Scripture schedule and appointments below are examples. Your check-ins and Sunday reflection are kept separately on this device.</p></div>
           <div>
             <p className="small" style={{ fontSize: 13 }}>

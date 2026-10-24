@@ -6,6 +6,7 @@ import { type Profile, heaviest, loadProfile, minutesLabel, needsCompany } from 
 import { clearTodayCheckIn, dailyNeeds, dateKey, loadCheckIns, saveCheckIn, type NeedId } from "../lib/check-in";
 import { women } from "../lib/women";
 import Reflect from "./Reflect";
+import JourneyGuide from "./JourneyGuide";
 import { AppTabBar } from "./SiteChrome";
 
 // Day 1 of her table, built from her story. Devotion text is a draft pending pastor review.
@@ -49,7 +50,7 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
     <div className="app-shell">
       <div className="phone">
         <main className="phone-body">
-          <Link href="/" className="small">← Back to At His Table</Link>
+          <JourneyGuide place="today" sample={sample} />
           {!profile && (
             <Link href="/your-story" className="card" style={{ padding: "12px 14px", fontSize: 14, lineHeight: 1.45, textDecoration: "none", color: "var(--ink)", background: "var(--blush)", borderColor: "transparent" }}>
               {sample ? "This is a sample day." : "You’re exploring a sample day."}{" "}<strong style={{ color: "var(--plum)" }}>Tell us your story</strong> and we&rsquo;ll set a table just for you →
@@ -127,7 +128,7 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
           </section>
 
           <p className="small">{a.minutes === "About 5 minutes" ? "A short sitting: read the verse, pray, and carry one thought into your day. Writing is optional." : a.minutes === "20–30 minutes" ? `A longer sitting: read ${w.ref} in your Bible, then take time with the reflection and prayer.` : "Read slowly, pause with the reflection, and pray in your own words. Take the time you need."}</p>
-          <Reflect prompt={w.prompt} scripture={w.verse.ref} prayer={w.prayer} />
+          <Reflect prompt={w.prompt} scripture={w.verse.ref} prayer={w.prayer} sample={sample} />
 
           {profile && needsCompany(a) && (
             <section className="stack" style={{ gap: 8, background: "var(--blush)", borderRadius: 12, padding: 18 }}>

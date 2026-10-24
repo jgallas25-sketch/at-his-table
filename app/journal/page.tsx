@@ -1,3 +1,4 @@
+import JourneyGuide from "../components/JourneyGuide";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JournalList from "../components/JournalList";
@@ -10,7 +11,7 @@ export default function JournalPage() {
     <div className="app-shell">
       <div className="phone">
         <main className="phone-body">
-          <Link href="/" className="small">← Back to At His Table</Link>
+          <JourneyGuide place="journal" />
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 12 }}>
             <div>
               <p className="small" style={{ fontSize: 13 }}>
@@ -20,7 +21,7 @@ export default function JournalPage() {
                 What God is doing
               </h1>
             </div>
-            <Link href="/today" className="btn" style={{ minHeight: 44, padding: "0 16px", fontSize: 15 }}>
+            <Link href="/today#reflection" className="btn" style={{ minHeight: 44, padding: "0 16px", fontSize: 15 }}>
               + New
             </Link>
           </div>

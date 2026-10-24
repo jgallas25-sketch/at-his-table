@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import JourneyGuide from "./JourneyGuide";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -124,6 +125,7 @@ export default function Intake({ seasonSlug }: { seasonSlug?: string }) {
   return (
     <div className="app-shell">
       <div className="phone intake-panel">
+        <div className="intake-guide"><JourneyGuide place="story" /><Link href="/your-story" className="small">Prefer the three-question start?</Link></div>
         {screen === "welcome" && (
           <div className="phone-body" style={{ justifyContent: "flex-end", gap: 18, padding: "32px 28px 40px", background: "var(--linen)" }}>
             <Link href="/" style={{ marginBottom: "auto" }} aria-label="Back to At His Table home">

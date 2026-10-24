@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import JourneyGuide from "./JourneyGuide";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { addEntry } from "../lib/journal";
@@ -31,10 +33,12 @@ export default function Reflect({
   prompt,
   scripture,
   prayer,
+  sample = false,
 }: {
   prompt: string;
   scripture: string;
   prayer: string;
+  sample?: boolean;
 }) {
   const [saveError, setSaveError] = useState("");
   const [reflection, setReflection] = useState("");
@@ -55,7 +59,7 @@ export default function Reflect({
       setHelp(need);
       return;
     }
-    router.push("/journal");
+    router.push("/overview?finished=1&saved=1");
   }
 
   if (help) {
@@ -77,7 +81,8 @@ export default function Reflect({
   }
 
   return (
-    <>
+    <section id="reflection" className="stack" style={{ gap: 22 }}>
+      <JourneyGuide place="reflection" sample={sample} />
       <section className="stack" style={{ gap: 8 }}>
         <StepLabel n={3} htmlFor="reflect">
           Reflection
@@ -115,8 +120,9 @@ export default function Reflect({
 
       {saveError && <p role="alert">{saveError}</p>}
       <button className="btn" style={{ width: "100%" }} onClick={save}>
-        Save to my testimony journal
+        Save and finish for today
       </button>
-    </>
+      <Link className="finish-link" href="/overview?finished=1" onClick={e => { if ((reflection.trim() || gratitude.trim()) && !window.confirm("Finish without saving your writing? Choose Cancel to return and save it.")) e.preventDefault(); }}>Finish for today{reflection.trim() || gratitude.trim() ? " without saving" : " — no writing needed"}</Link>
+    </section>
   );
 }
