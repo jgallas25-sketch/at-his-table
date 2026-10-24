@@ -30,6 +30,12 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
     setReady(true);
   }, [sample]);
 
+  useEffect(() => {
+    if (!ready) return;
+    const id = window.location.hash.slice(1);
+    if (id === "reflection" || id === "check-in") document.getElementById(id)?.scrollIntoView();
+  }, [ready]);
+
   if (!ready) return <div className="app-shell"><div className="phone" /></div>;
 
   const weeklyWoman = women[profile?.woman ?? ""] ?? women.elizabeth;
@@ -53,7 +59,7 @@ export default function TodayView({ sample = false }: { sample?: boolean }) {
           <JourneyGuide place="today" sample={sample} />
           {!profile && (
             <Link href="/your-story" className="card" style={{ padding: "12px 14px", fontSize: 14, lineHeight: 1.45, textDecoration: "none", color: "var(--ink)", background: "var(--blush)", borderColor: "transparent" }}>
-              {sample ? "This is a sample day." : "You’re exploring a sample day."}{" "}<strong style={{ color: "var(--plum)" }}>Tell us your story</strong> and we&rsquo;ll set a table just for you →
+              {sample ? "This is a sample day." : "You’re exploring a sample day."}{" "}<strong style={{ color: "var(--plum)" }}>Tell us your story</strong>{" "}and we&rsquo;ll set a table just for you →
             </Link>
           )}
 
