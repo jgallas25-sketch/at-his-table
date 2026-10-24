@@ -76,9 +76,9 @@ export default function Home() {
           <div className="wrap stack" style={{ gap: 40 }}>
             <div className="split">
               <img
-                src="/images/table-mug.jpg"
-                alt="An At His Table mug waiting on the table"
-                style={{ width: "100%", height: 380, objectFit: "cover", objectPosition: "50% 52%", borderRadius: 12 }}
+                src="/images/martha-kitchen.jpg"
+                alt="A mother cooking alone in the kitchen on Thanksgiving while her family laughs at the table in the next room"
+                style={{ width: "100%", height: 400, objectFit: "cover", objectPosition: "50% 45%", borderRadius: 12 }}
               />
               <div className="stack">
                 <p className="eyebrow" style={{ color: "#5c2a1a" }}>
