@@ -34,8 +34,6 @@ export default function Home() {
               </Link>
               <Link href="/today?sample=1" className="link-arrow">Try a Sample Day</Link>
             </div>
-            <p className="small">First time? <Link href="/welcome">Let Heather show you →</Link></p>
-            <p className="small">7 days free. Cancel anytime.</p>
           </div>
           <div className="hero-photo">
             <HeroMedia />
