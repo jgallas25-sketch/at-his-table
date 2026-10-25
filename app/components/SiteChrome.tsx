@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SeatButton from "./SeatButton";
 
 const navLinks = [
   { href: "/#vision", label: "The Vision" },
@@ -24,12 +25,7 @@ export function SiteHeader() {
         ))}
       </nav>
       <div className="header-cta">
-        <Link href="/overview" className="sign-in" style={{ fontSize: 15, textDecoration: "none" }}>
-          Overview
-        </Link>
-        <Link href="/your-story" className="btn">
-          Take Your Seat
-        </Link>
+        <SeatButton />
       </div>
     </header>
   );
