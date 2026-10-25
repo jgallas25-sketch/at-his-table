@@ -27,7 +27,7 @@ export default function WelcomeIntro({ full = false }: { full?: boolean }) {
         <span className="welcome-step-number" aria-hidden="true">{i + 1}</span><p className="label">{step.timing}</p><h3 className="display">{step.title}</h3><p>{step.text}</p>
         {full && i > 0 && <div className="welcome-exchange"><p><strong>Emily:</strong> {step.question}</p><p><strong>Heather:</strong> {step.answer}</p></div>}
       </li>)}</ol>
-      <div className="welcome-ending"><p className="display">Miss a day? Just come back. Your seat is still here.</p><div className="action-row"><Link href="/your-story" className="btn">Take Your Seat →</Link><Link href="/today">Already started? Go to Today</Link></div>{full ? <Link href="/overview" className="small">See the whole picture →</Link> : <Link href="/welcome" className="small">Read the one-minute introduction →</Link>}</div>
+      <div className="welcome-ending"><p className="display">Miss a day? Just come back. Your seat is still here.</p>{full && <div className="action-row"><Link href="/your-story" className="btn">Take Your Seat →</Link><Link href="/today">Already started? Go to Today</Link></div>}</div>
     </div>
   </section>;
 }

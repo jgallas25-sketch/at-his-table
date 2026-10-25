@@ -93,9 +93,6 @@ export default function Home() {
                   better seat. At His Table is for the woman who serves everyone else and quietly wonders when
                   there will be room for her. There is. It&rsquo;s already set.
                 </p>
-                <a href="#seasons" className="link-arrow" style={{ color: "var(--clay-ink)" }}>
-                  Find your seat →
-                </a>
               </div>
             </div>
             <div className="grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
@@ -133,14 +130,6 @@ export default function Home() {
                 <p className="lead">
                   Meet Emily and Heather: two women talking honestly about faith in the middle of a full life. Their kitchen-table series is coming soon.
                 </p>
-                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 18 }}>
-                  <Link href="/today?sample=1" className="btn btn-light">
-                    Try the devotional
-                  </Link>
-                  <p className="small" style={{ color: "#cfc0c7" }}>
-                    Explore the daily experience while the series is in preparation.
-                  </p>
-                </div>
               </div>
             </div>
             <div
@@ -221,11 +210,6 @@ export default function Home() {
             Sometimes life is full of good things &mdash; and that&rsquo;s when time with Him slips away first. Hard
             seasons, new seasons, happy seasons: every one has a seat at His table.
           </p>
-          <div className="wrap card stack" style={{ marginTop: 28, padding: 24, alignItems: "center" }}>
-            <h3 className="display" style={{ fontSize: 28 }}>What’s on your heart today?</h3>
-            <p className="small">Your season stays the same, but some days feel different. Tell Him what you&rsquo;re carrying today.</p>
-            <Link href="/today#check-in" className="link-arrow">Start today’s check-in →</Link>
-          </div>
         </section>
 
         {/* ── Your Story ───────────────────────────── */}
@@ -239,12 +223,6 @@ export default function Home() {
                 long to go. We&rsquo;ll introduce you to a woman of the Bible who knows that road, and shape your
                 planner, devotions and journal around you.
               </p>
-              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 20 }}>
-                <Link href="/your-story" className="btn">
-                  Find Your Story <span aria-hidden="true">→</span>
-                </Link>
-                <p className="small">About 6 minutes. Skip anything you like.</p>
-              </div>
             </div>
             <div className="grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", gap: 24 }}>
               {examplePairs.map((p) => (
@@ -300,18 +278,8 @@ export default function Home() {
               <p className="eyebrow">The planner</p>
               <h2 className="display h2">A planner that makes room for God in the life you actually have.</h2>
               <p className="lead">
-                Explore a sample week with Scripture alongside everyday plans. Your daily check-ins and Sunday reflection help you notice what you want to bring to God.
+                Scripture alongside your everyday plans. Your daily check-ins and Sunday reflection help you notice what you want to bring to God.
               </p>
-
-              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 18 }}>
-                <Link href="/your-story" className="btn">
-                  Take Your Seat <span aria-hidden="true">→</span>
-                </Link>
-                <Link href="/planner" className="link-arrow" style={{ fontSize: 16 }}>
-                  See a sample week
-                </Link>
-              </div>
-              <p className="small">7 days free. Cancel anytime.</p>
             </div>
             <div className="card stack" style={{ padding: 28, gap: 16 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
